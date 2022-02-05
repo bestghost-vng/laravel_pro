@@ -16,7 +16,10 @@ class DacSanResources extends JsonResource
     {
         return [
             'id'=> $this->id,
-            'tendacsan'=>$this ->tendacsan
+            'tendacsan'=>$this ->tendacsan,
+            'hinhanh'=>$this->hinhanh,
+            'mota'=>$this->mota,
+            'gia'=>$this->gia,
         ];
     }
 }

@@ -16,7 +16,8 @@ class QuanAnResources extends JsonResource
     {
         return [
             'id'=>$this->id,
-            'tenquanan'=>$this->tenquanan
+            'tenquanan'=>$this->tenquanan,
+            'hinhanh'=>$this->hinhanh,
           ];
     }
 }

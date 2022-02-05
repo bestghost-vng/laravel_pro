@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\DichVu;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class DiaDiemResources extends JsonResource
@@ -17,10 +18,12 @@ class DiaDiemResources extends JsonResource
         return [
             'id'=> $this->id,
             'tendiadiem'=>$this->tendiadiem,
-            'tenvungmien'=>VungMienResources::collection($this->tenvung),
             'kinhdo'=>$this->kinhdo,
             'vido'=>$this->vido,
             'mieuta'=>$this->mieuta,
+            'tenquanan'=>QuanAnResources::collection($this->tenquanan),
+            // 'tenkhachsan'=>KhachSanResources::collection($this->tenkhachsan),
+            // 'tendichvu'=>DichVuResources::collection($this->tendichvu),
         ];
     }
 }

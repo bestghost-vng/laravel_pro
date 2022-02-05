@@ -18,12 +18,11 @@ class BaiVietResources extends JsonResource
             'id'=> $this->id,
             'ngaydang'=>$this ->ngay_dang,
             'noidung'=>$this->noi_dung,
-            // 'hinhanh'=>DanhSachHinhBaiViet::collection(HinhBaiViet::collection($this->nguon)),
-            'tenquanan'=>QuanAnResources::collection($request->tenquanan),
-            // 'tendacsan'=>DacSan::collection($this->tendacsan),
-            // 'tendiadiem'=>DiaDiem::collection($this->tendiadiem),
-            // 'tendichvu'=>DichVu::collection($this->tendichvu),
-            // 'tennguoidang'=>User::collection($this->name)
+            'tenquanan'=>QuanAnResources::collection($this->tenquanan),
+            'tendacsan'=>DacSanResources::collection($this->tendacsan),
+            'tendiadiem'=>DiaDiemResources::collection($this->tendiadiem),
+            'tendichvu'=>DichVuResources::collection($this->tendichvu),
+            'tennguoidang'=>UserResources::collection($this->name)
 
         ];
     }

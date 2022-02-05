@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\DiaDiemResources;
+use App\Models\DiaDiem;
 use Illuminate\Http\Request;
 
 class DiaDiemController extends Controller
@@ -14,7 +16,9 @@ class DiaDiemController extends Controller
      */
     public function index()
     {
-        //
+        $products = DiaDiem::all();
+    
+        return DiaDiemResources::collection($products);
     }
 
     /**

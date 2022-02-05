@@ -15,17 +15,16 @@ class CreateBaiVietsTable extends Migration
     {
         Schema::create('bai_viets', function (Blueprint $table) {
             $table->id();
-            $table->string('nguoi_dang');
-            $table->dateTime('ngay_dang');
             $table->text('noi_dung');
-            $table->integer('id_like');
-            $table->integer('id_dislike');
-            $table->integer('id_view');
+            $table->integer('like');
+            $table->integer('dislike');
+            $table->integer('view');
             $table->integer('trangthai');
             $table->foreignId('id_quanan');
             $table->foreignId('id_dacsan');
             $table->foreignId('id_diadiem');
             $table->foreignId('id_dichvu');
+            $table->foreignId('id_khachsan');
             $table->foreignId('id_nguoidung');
             $table->softDeletes();
             $table->timestamps();

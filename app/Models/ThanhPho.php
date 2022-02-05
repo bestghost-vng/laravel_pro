@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class VungMien extends Model
+class ThanhPho extends Model
 {
     use HasFactory;
     protected $guard =[];
     protected $primaryKey = 'id';
-    protected $fillable = ['tenvungmien'];
+    protected $fillable = ['tenthanhpho','hinhanh','mota','trangthai','id_vungmien'];
 
-    public function Thanhpho(){
-        return $this->belongsTo(ThanhPho::class);
+    public function VunnMien(){
+        return $this->belongsTo(VungMien::class,'id_vungmien','id');
     }
 }

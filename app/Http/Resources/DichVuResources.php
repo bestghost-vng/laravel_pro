@@ -17,7 +17,8 @@ class DichVuResources extends JsonResource
         return [
             'id'=> $this->id,
             'tendichvu'=>$this->tendichvu,
-            
+            'hinhanh'=>$this->hinhanh,
+            'mota'=>$this->mota,
         ];
     }
 }

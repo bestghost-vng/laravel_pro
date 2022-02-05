@@ -16,7 +16,7 @@ class CreateHinhBaiVietsTable extends Migration
         Schema::create('hinh_bai_viets', function (Blueprint $table) {
             $table->id();
             $table->string('nguon');
-            $table->foreignId('id_hinh_anh');
+            $table->foreignId('id_hinh_anh')->references('id')->on('bai_viets');
             $table->integer('trangthai');
             $table->softDeletes();
             $table->timestamps();

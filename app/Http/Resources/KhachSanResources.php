@@ -17,6 +17,7 @@ class KhachSanResources extends JsonResource
         return [
             'id'=>$this->id,
             'tenkhachsan'=>$this->tenkhachsan,
+            'hinhanh'=>$this->hinhanh,
             'diachi'=>$this->diachi,
             'danhgia'=>$this->danhgia
           ];

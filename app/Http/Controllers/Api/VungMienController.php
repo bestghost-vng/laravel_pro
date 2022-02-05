@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\VungMien;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Http\Resources\VungMien as VungMienResours;
+use App\Http\Resources\VungMienResources;
 class VungMienController extends Controller
 {
     /**
@@ -18,7 +18,7 @@ class VungMienController extends Controller
     {
         $vungMien = VungMien::all();
 
-        return VungMienResours::collection($vungMien);
+        return VungMienResources::collection($vungMien);
     }
 
     /**
@@ -31,7 +31,7 @@ class VungMienController extends Controller
     {
         $vungMien =VungMien::create($request->all());
 
-        return new VungMienResours($vungMien);
+        return new VungMienResources($vungMien);
     }
 
     /**
@@ -42,7 +42,7 @@ class VungMienController extends Controller
      */
     public function show(VungMien $vungMien)
     {
-        return new VungMienResours($vungMien);
+        return new VungMienResources($vungMien);
     }
 
     /**

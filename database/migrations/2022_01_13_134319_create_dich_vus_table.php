@@ -16,6 +16,8 @@ class CreateDichVusTable extends Migration
         Schema::create('dich_vus', function (Blueprint $table) {
             $table->id();
             $table->string('tendichvu');
+            $table->string('mota');
+            $table->string('hinhanh');
             $table->integer('trangthai');
             $table->softDeletes();
             $table->timestamps();

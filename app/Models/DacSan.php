@@ -9,10 +9,14 @@ class DacSan extends Model
 {
     use HasFactory; 
     protected $guard =[];
-    public function DanhSachHinh(){
-        return $this->belongsTo(DanhSachHinhDacSan::class);
+    protected $fillable = ['tendacsan','hinhanh','mota','gia','quanan_id','trangthai'];
+    public function QuanAn(){
+        return $this->hasMany(QuanAn::class);
    }
     public function BaiViet(){
         return $this->hasMany(BaiViet::class);
+    }
+    public function DiaDiem(){
+        return $this->belongsTo(DiaDiem::class);
     }
 }

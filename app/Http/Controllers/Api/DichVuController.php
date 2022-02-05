@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\DichVuResources;
+use App\Models\DichVu;
 use Illuminate\Http\Request;
 
 class DichVuController extends Controller
@@ -14,7 +16,9 @@ class DichVuController extends Controller
      */
     public function index()
     {
-        //
+        $products = DichVu::all();
+    
+        return DichVuResources::collection($products);
     }
 
     /**

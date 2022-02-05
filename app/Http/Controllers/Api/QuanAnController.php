@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\QuanAnResources;
+use App\Models\QuanAn;
 use Illuminate\Http\Request;
 
 class QuanAnController extends Controller
@@ -14,7 +16,9 @@ class QuanAnController extends Controller
      */
     public function index()
     {
-        //
+        $products = QuanAn::all();
+    
+        return QuanAnResources::collection($products);
     }
 
     /**

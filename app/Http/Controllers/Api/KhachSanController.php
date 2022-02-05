@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\KhachSanResources;
+use App\Models\KhachSan;
 use Illuminate\Http\Request;
 
 class KhachSanController extends Controller
@@ -14,7 +16,9 @@ class KhachSanController extends Controller
      */
     public function index()
     {
-        //
+        $products = KhachSan::all();
+    
+        return KhachSanResources::collection($products);
     }
 
     /**
