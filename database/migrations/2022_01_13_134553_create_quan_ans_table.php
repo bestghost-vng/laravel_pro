@@ -16,6 +16,8 @@ class CreateQuanAnsTable extends Migration
         Schema::create('quan_ans', function (Blueprint $table) {
             $table->id();
             $table->string('tenquanan');
+            $table->string('diachi');
+            $table->string('hinhanh');
             $table->softDeletes();
             $table->timestamps();
         });

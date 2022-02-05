@@ -16,7 +16,10 @@ class CreateDacSansTable extends Migration
         Schema::create('dac_sans', function (Blueprint $table) {
             $table->id();
             $table->string('tendacsan');
-            $table->integer('id_danhsach');    
+            $table->text('mota');
+            $table->integer('gia');
+            $table->string('hinhanh');  
+            $table->foreignId('quanan_id')->references('id')->on('quan_ans');  
             $table->integer('trangthai');
             $table->softDeletes();
             $table->timestamps();

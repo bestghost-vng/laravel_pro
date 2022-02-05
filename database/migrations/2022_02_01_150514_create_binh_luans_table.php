@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDanhSachHinhBaiVietsTable extends Migration
+class CreateBinhLuansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateDanhSachHinhBaiVietsTable extends Migration
      */
     public function up()
     {
-        Schema::create('danh_sach_hinh_bai_viets', function (Blueprint $table) {
+        Schema::create('binh_luans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_hinh')->references('id')->on('hinh_bai_viets');
-            $table->foreignId('id_bang')->references('id')->on('bai_viets');
+            $table->foreignId('id_nguoidung')->references('id')->on('users');
+            $table->foreignId('id_baiviet')->references('id')->on('bai_viets');
+            $table->text('noidung');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateDanhSachHinhBaiVietsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('danh_sach_hinh_bai_viets');
+        Schema::dropIfExists('binh_luans');
     }
 }

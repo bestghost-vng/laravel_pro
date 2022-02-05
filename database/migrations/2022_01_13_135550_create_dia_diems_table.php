@@ -16,13 +16,12 @@ class CreateDiaDiemsTable extends Migration
         Schema::create('dia_diems', function (Blueprint $table) {
             $table->id();
             $table->string('tendiadiem');
-            $table->foreignId('id_vungmien');
             $table->double('kinhdo');
             $table->double('vido');
             $table->string('mieuta');   
-            $table->foreignId('id_dacsan')->references('id')->on('dac_sans');
-            $table->foreignId('id_dichvu')->references('id')->on('dich_vus');
-            $table->foreignId('id_khachsan')->references('id')->on('khach_sans');
+            $table->foreignId('quanan_id')->references('id')->on('quan_ans');
+            $table->foreignId('dichvu_id')->references('id')->on('dich_vus');
+            $table->foreignId('khachsan_id')->references('id')->on('khach_sans');
             $table->integer('trangthai');
             $table->softDeletes();
             $table->timestamps();

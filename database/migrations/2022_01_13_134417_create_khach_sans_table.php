@@ -16,6 +16,7 @@ class CreateKhachSansTable extends Migration
         Schema::create('khach_sans', function (Blueprint $table) {
             $table->id();
             $table->string('tenkhachsan');
+            $table->string('hinhanh');
             $table->string('diachi');
             $table->integer('danhgia');
             $table->integer('trangthai');

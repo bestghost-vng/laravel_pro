@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class DanhSachHinhDacSanSeeder extends Seeder
+class BinhLuanSeeder extends Seeder
 {
     /**
      * Run the database seeds.

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\BaiViet;
 use Illuminate\Database\Seeder;
 
 class BaiVietSeeder extends Seeder
@@ -13,6 +14,23 @@ class BaiVietSeeder extends Seeder
      */
     public function run()
     {
-        //
+        for($i=1;$i<=2;$i++)
+         { $dacSan= new BaiViet;
+          $dacSan->fill(
+              [
+                'noi_dung'=>'ngon'.$i,
+                'like'=>$i,
+                'dislike'=>$i,
+                'view'=>$i,
+                'trangthai'=>$i,
+                'id_quanan'=>$i,
+                'id_dacsan'=>$i,
+                'id_diadiem'=>$i,
+                'id_dichvu'=>$i,
+                'id_khachsan'=>$i,
+                'id_nguoidung'=>$i,
+              ]
+              );
+              $dacSan->save();}
     }
 }

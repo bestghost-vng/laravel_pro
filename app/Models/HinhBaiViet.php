@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class HinhBaiViet extends Model
 {
     use HasFactory;
-    
     public function HinhBaiViet(){
-        return $this->hasMany(DanhSachHinhBaiViet::class);
+        return $this->hasMany(BaiViet::class,'id_hinh_anh','id');
     }
 }
