@@ -1,11 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Redirect;
 use App\Models\DiaDiem;
-use App\Http\Requests\StoreDiaDiemRequest;
-use App\Http\Requests\UpdateDiaDiemRequest;
-
+use Illuminate\Http\Request;
 class DiaDiemController extends Controller
 {
     /**
@@ -15,7 +13,8 @@ class DiaDiemController extends Controller
      */
     public function index()
     {
-        //
+        $diaDiem= DiaDiem::all(); 
+        return view('diadiem.diadiem',['diaDiem'=>$diaDiem,'tendichvu'=>$diaDiem->DichVu,'tenkhachsan'=>$diaDiem->KhachSan,'tenquanan'=>$diaDiem->QuanAn]);
     }
 
     /**
@@ -25,7 +24,7 @@ class DiaDiemController extends Controller
      */
     public function create()
     {
-        //
+        return view('diadiem.them');
     }
 
     /**
@@ -34,9 +33,23 @@ class DiaDiemController extends Controller
      * @param  \App\Http\Requests\StoreDiaDiemRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreDiaDiemRequest $request)
+    public function store(Request $request)
     {
-        //
+        $diaDiem= new DiaDiem;
+        $diaDiem->fill(
+                [
+                    'tendiadiem'=>$request->input('tendiadiem'),
+                    'mieuta'=>$request->input('mieuta'),
+                    'kinhdo'=>$request->input('kinhdo'),
+                    'vido'=>$request->input('vido'),
+                    'quanan_id'=>$request->input('iddacsan'),
+                    'dichvu_id'=>$request->input('iddichvu'),
+                    'khachsan_id'=>$request->input('idkhachsan'),
+                    'trangthai'=>$request->input('trangthai'),
+                ]
+                );
+             $diaDiem->save();
+             return Redirect::route('diadiem.show');
     }
 
     /**
@@ -47,7 +60,7 @@ class DiaDiemController extends Controller
      */
     public function show(DiaDiem $diaDiem)
     {
-        //
+        return view();
     }
 
     /**
@@ -58,7 +71,7 @@ class DiaDiemController extends Controller
      */
     public function edit(DiaDiem $diaDiem)
     {
-        //
+        
     }
 
     /**
@@ -68,7 +81,7 @@ class DiaDiemController extends Controller
      * @param  \App\Models\DiaDiem  $diaDiem
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDiaDiemRequest $request, DiaDiem $diaDiem)
+    public function update(Request $request, DiaDiem $diaDiem)
     {
         //
     }

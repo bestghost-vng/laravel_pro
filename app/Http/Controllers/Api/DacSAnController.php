@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\DacSanResources;
+use App\Models\DacSan;
 use Illuminate\Http\Request;
 
 class DacSAnController extends Controller
@@ -14,7 +16,9 @@ class DacSAnController extends Controller
      */
     public function index()
     {
-        //
+        $products = DacSan::all();
+    
+        return DacSanResources::collection($products);
     }
 
     /**

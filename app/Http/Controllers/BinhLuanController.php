@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DanhSachHinhBaiViet;
-use App\Http\Requests\StoreDanhSachHinhBaiVietRequest;
-use App\Http\Requests\UpdateDanhSachHinhBaiVietRequest;
+use App\Models\BinhLuan;
+use App\Http\Requests\StoreBinhLuanRequest;
+use App\Http\Requests\UpdateBinhLuanRequest;
 
-class DanhSachHinhBaiVietController extends Controller
+class BinhLuanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class DanhSachHinhBaiVietController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreDanhSachHinhBaiVietRequest  $request
+     * @param  \App\Http\Requests\StoreBinhLuanRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreDanhSachHinhBaiVietRequest $request)
+    public function store(StoreBinhLuanRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class DanhSachHinhBaiVietController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\DanhSachHinhBaiViet  $danhSachHinhBaiViet
+     * @param  \App\Models\BinhLuan  $binhLuan
      * @return \Illuminate\Http\Response
      */
-    public function show(DanhSachHinhBaiViet $danhSachHinhBaiViet)
+    public function show(BinhLuan $binhLuan)
     {
         //
     }
@@ -53,10 +53,10 @@ class DanhSachHinhBaiVietController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\DanhSachHinhBaiViet  $danhSachHinhBaiViet
+     * @param  \App\Models\BinhLuan  $binhLuan
      * @return \Illuminate\Http\Response
      */
-    public function edit(DanhSachHinhBaiViet $danhSachHinhBaiViet)
+    public function edit(BinhLuan $binhLuan)
     {
         //
     }
@@ -64,11 +64,11 @@ class DanhSachHinhBaiVietController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateDanhSachHinhBaiVietRequest  $request
-     * @param  \App\Models\DanhSachHinhBaiViet  $danhSachHinhBaiViet
+     * @param  \App\Http\Requests\UpdateBinhLuanRequest  $request
+     * @param  \App\Models\BinhLuan  $binhLuan
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDanhSachHinhBaiVietRequest $request, DanhSachHinhBaiViet $danhSachHinhBaiViet)
+    public function update(UpdateBinhLuanRequest $request, BinhLuan $binhLuan)
     {
         //
     }
@@ -76,10 +76,10 @@ class DanhSachHinhBaiVietController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\DanhSachHinhBaiViet  $danhSachHinhBaiViet
+     * @param  \App\Models\BinhLuan  $binhLuan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DanhSachHinhBaiViet $danhSachHinhBaiViet)
+    public function destroy(BinhLuan $binhLuan)
     {
         //
     }

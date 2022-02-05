@@ -10,36 +10,34 @@ use Illuminate\Auth\Authenticatable;
 class UserController extends Controller
 {
     public function getlogin(Request $request ){
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required','password'],
-        ]);
-        if (Auth::guard('web')->attempt($credentials)){
-          return redirect()->route('dasboard');
+        $credentials = $request->only('email', 'password');
+        if (Auth::guard('web')->attempt($credentials)) {
+            return redirect()->route('dasboard');
+        }else{
+            echo "Dang nhap loi";exit;
         }
-        else{
-         return view('dangnhap.login');
-        }
+       
        
     } 
     public function dasboard(){
-        return redirect()->route('loaddacsan');
+        return redirect()->route('baiviet.show');
     }
     public function logout(){
         Auth::guard('users')->logout();
         return view('dangnhap.login');
    }
-}
+
 //     /**
 //      * Display a listing of the resource.
 //      *
 //      * @return \Illuminate\Http\Response
 //      */
-//     public function index()
-//     {
-       
-//     }
-
+    public function index()
+    {
+       $users= User::all();
+       return view('user.user',['user'=>$users]);
+    }
+}
 //     /**
 //      * Show the form for creating a new resource.
 //      *

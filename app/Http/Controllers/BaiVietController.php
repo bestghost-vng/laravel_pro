@@ -3,17 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\BaiViet;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreBaiVietRequest;
-use App\Http\Requests\UpdateBaiVietRequest;
-use App\Models\DacSan;
-use App\Models\DanhSachHinhBaiViet;
-use App\Models\DiaDiem;
-use App\Models\DichVu;
-use App\Models\HinhBaiViet;
-use App\Models\KhachSan;
-use App\Models\QuanAn;
-use App\Models\User;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Redirect;
+
 class BaiVietController extends Controller
 {
     /**
@@ -24,30 +17,17 @@ class BaiVietController extends Controller
     public function index()
     {   
         $baiViet= BaiViet::all(); 
-        $hinh=HinhBaiViet::where('id','id_hinh');
-        foreach($baiViet as $bt)
-        {
-         $qa= QuanAn::find($bt->id);
-         $bt->id_quanan=$qa->tenquanan;  
-         $dacsan=DacSan::find($bt->id);
-         $bt->id_dacsan=$dacsan->tendacsan;
-         $dichvu=DichVu::find($bt->id);
-         $bt->id_dichvu=$dichvu->tendichvu;
-         $diadiem=DiaDiem::find($bt->id);
-         $bt->id_diadiem=$diadiem->tendiadiem;
-         $user=User::find($bt->id);
-         $bt->id_nguoidung=$user->name;
-        }
-        return view('baiviet.baiviet-them',['baiviet'=>$baiViet,'hinh'=>$hinh]);
+      
+        return view('baiviet.baiviet',['baiViet'=>$baiViet]);
     }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(StoreBaiVietRequest $request)
     {
-        //
+         
     }
 
     /**
@@ -58,7 +38,19 @@ class BaiVietController extends Controller
      */
     public function store(StoreBaiVietRequest $request)
     {
-        //
+    //   $baiViet= new BaiViet;
+    //   $baiViet->fill(
+    //       [
+    //           'noi_dung'=>$request->input('noidung'),
+    //           'tenquanan'=>$request->input('tenquanan'),
+    //           'tendacsan'=>$request->input('tendacsan'),
+    //           'tendiadiem'=>$request->input('tendiadiem'),
+    //           'tendichvu'=>$request->input('tendichvu'),
+    //           'tennguoidung'=>$request->input('tennguoidung'),
+    //       ]
+    //       );
+    //     $baiViet->save();
+    //     return Redirect::route('baiviet.baiviet-detail',['baiViet'=>$baiViet]);
     }
 
     /**
@@ -69,7 +61,7 @@ class BaiVietController extends Controller
      */
     public function show(BaiViet $baiViet)
     {
-        //
+        return view('baiviet.baiviet-detail',['baiViet'=>$baiViet,'tenquanan'=>$baiViet->QuanAn,'tendiadiem'=>$baiViet->DiaDiem,'tenkhachsan'=>$baiViet->KhachSan,'tendacsan'=>$baiViet->DacSan,'tennguoidung'=>$baiViet->User]);
     }
 
     /**
@@ -80,7 +72,7 @@ class BaiVietController extends Controller
      */
     public function edit(BaiViet $baiViet)
     {
-        //
+        // return view('baiviet.baiviet-edit',['baiViet'=>$baiViet,'tenquanan'=>$baiViet->QuanAn,'tendiadiem'=>$baiViet->DiaDiem,'tenkhachsan'=>$baiViet->KhachSan,'tendacsan'=>$baiViet->DacSan,'tennguoidung'=>$baiViet->User]);
     }
 
     /**
@@ -90,9 +82,21 @@ class BaiVietController extends Controller
      * @param  \App\Models\BaiViet  $baiViet
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBaiVietRequest $request, BaiViet $baiViet)
+    public function update(Request $request, BaiViet $baiViet)
     {
-        //
+        
+        // $baiViet->fill(
+        //     [
+        //         'noi_dung'=>$request->input('noidung'),
+        //         'id_quanan'=>$request->input('tenquanan'),
+        //         'id_dacsan'=>$request->input('tendacsan'),
+        //         'id_diadiem'=>$request->input('tendiadiem'),
+        //         'id_dichvu'=>$request->input('tendichvu'),
+        //         'id_nguoidung'=>$request->input('tennguoidung'),
+        //     ]
+        //     );
+        //   $baiViet->save();
+        //   return Redirect::route('baiviet.baiviet-detail',['baiViet'=>$baiViet]);
     }
 
     /**
@@ -103,6 +107,7 @@ class BaiVietController extends Controller
      */
     public function destroy(BaiViet $baiViet)
     {
-        //
+       $baiViet->delete();
+        return Redirect::route('baiviet.show');
     }
 }
