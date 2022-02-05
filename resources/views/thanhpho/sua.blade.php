@@ -17,9 +17,9 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Cap Nhap Dịch Vụ Mới </h4>
+                    <h4 class="card-title">Cập Nhập Thành Phố </h4>
                     
-                    <form class="forms-sample" action="{{route('quanan.update',['quanAn'=>$quanAn])}}" method="post" enctype="multipart/form-data">
+                    <form class="forms-sample" action="{{route('thanhpho.update',['thanhPho'=>$thanhPho])}}" method="post" enctype="multipart/form-data">
                              @csrf
                                 @if ($message = Session::get('success'))
                                 <div class="alert alert-success">
@@ -37,14 +37,21 @@
                                 @endif
                                 @method('PUT')
                       <div class="form-group">
-                        <label for="exampleInputEmail3">Tên Dịch Vụ </label>
-                        <input type="text" class="form-control" name="tendichvu" value="{{$quanAn->tenquanan}}">
+                        <label for="exampleInputEmail3">Tên Thành Phố </label>
+                        <input type="text" class="form-control" name="tenthanhpho" value="{{$thanhPho->tenthanhpho}}">
                       </div>
                       <div class="form-group">
-                      <label for="exampleInputEmail3">Địa Chỉ</label>
-                        <input type="text" class="form-control" name="diachi" value="{{$quanAn->diachi}}">
+                      <label for="exampleInputEmail3">Mô Tả</label>
+                        <input type="text" class="form-control" name="mota" value="{{$thanhPho->mota}}">
                      </div>
-
+                      <div class="form-group">
+                      <label for="exampleInputEmail3">STT vung</label>
+                        <input type="text" class="form-control" name="idvung" value="{{$thanhPho->id_vungmien}}">
+                     </div>
+                     <div class="form-group">
+                      <label for="exampleInputEmail3">Trạng Thái</label>
+                        <input type="text" class="form-control" name="trangthai" value="{{$thanhPho->trangthai}}">
+                     </div>
                       <button type="submit" class="btn btn-primary mr-2">Submit</button>
                       <button class="btn btn-dark">Cancel</button>
                     </form>

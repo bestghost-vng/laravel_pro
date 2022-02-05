@@ -19,7 +19,7 @@
                   <div class="card-body">
                     <h4 class="card-title">Cap Nhap Dịch Vụ Mới </h4>
                     
-                    <form class="forms-sample" action="{{route('quanan.update',['quanAn'=>$quanAn])}}" method="post" enctype="multipart/form-data">
+                    <form class="forms-sample" action="{{route('khachsan.update',['khachSan'=>$khachSan])}}" method="post" enctype="multipart/form-data">
                              @csrf
                                 @if ($message = Session::get('success'))
                                 <div class="alert alert-success">
@@ -37,14 +37,21 @@
                                 @endif
                                 @method('PUT')
                       <div class="form-group">
-                        <label for="exampleInputEmail3">Tên Dịch Vụ </label>
-                        <input type="text" class="form-control" name="tendichvu" value="{{$quanAn->tenquanan}}">
+                        <label for="exampleInputEmail3">Tên Khách Sạn </label>
+                        <input type="text" class="form-control" name="tenkhachsan" value="{{$khachSan->tenkhachsan}}">
                       </div>
                       <div class="form-group">
                       <label for="exampleInputEmail3">Địa Chỉ</label>
-                        <input type="text" class="form-control" name="diachi" value="{{$quanAn->diachi}}">
+                        <input type="text" class="form-control" name="diachi" value="{{$khachSan->diachi}}">
                      </div>
-
+                      <div class="form-group">
+                      <label for="exampleInputEmail3">Đánh Giá</label>
+                        <input type="text" class="form-control" name="danhgia" value="{{$khachSan->danhgia}}">
+                     </div>
+                     <div class="form-group">
+                      <label for="exampleInputEmail3">Trạng Thái</label>
+                        <input type="text" class="form-control" name="trangthai" value="{{$khachSan->trangthai}}">
+                     </div>
                       <button type="submit" class="btn btn-primary mr-2">Submit</button>
                       <button class="btn btn-dark">Cancel</button>
                     </form>

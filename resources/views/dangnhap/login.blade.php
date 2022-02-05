@@ -27,7 +27,7 @@
               <div class="card-body px-5 py-5">
                 <h3 class="card-title text-left mb-3">Login</h3>
             
-                <form method="POST" action="/dangnhap">
+                <form method="POST" action="{{route('getlogin')}}">
                 @csrf
                   <div class="form-group">
                     <label> Email *</label>
@@ -47,12 +47,7 @@
                   <div class="text-center">
                     <button type="submit" class="btn btn-primary btn-block enter-btn">Login</button>
                   </div>
-                  <div class="d-flex">
-                    <button class="btn btn-facebook mr-2 col">
-                      <i class="mdi mdi-facebook"></i> Facebook </button>
-                    <button class="btn btn-google col">
-                      <i class="mdi mdi-google-plus"></i> Google plus </button>
-                  </div>
+                
                 </form>
               </div>
             </div>

@@ -17,9 +17,9 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Cap Nhap Dịch Vụ Mới </h4>
+                    <h4 class="card-title">Thêm Dịch Vụ Mới </h4>
                     
-                    <form class="forms-sample" action="{{route('quanan.update',['quanAn'=>$quanAn])}}" method="post" enctype="multipart/form-data">
+                    <form class="forms-sample" action="{{route('dichvu.store')}}" method="post" enctype="multipart/form-data">
                              @csrf
                                 @if ($message = Session::get('success'))
                                 <div class="alert alert-success">
@@ -35,14 +35,21 @@
                                     </ul>
                                 </div>
                                 @endif
-                                @method('PUT')
                       <div class="form-group">
                         <label for="exampleInputEmail3">Tên Dịch Vụ </label>
-                        <input type="text" class="form-control" name="tendichvu" value="{{$quanAn->tenquanan}}">
+                        <input type="text" class="form-control" name="tendichvu" placeholder="Nhập">
                       </div>
                       <div class="form-group">
-                      <label for="exampleInputEmail3">Địa Chỉ</label>
-                        <input type="text" class="form-control" name="diachi" value="{{$quanAn->diachi}}">
+                        <label for="exampleInputEmail3">Mô Tả </label>
+                        <input type="text" class="form-control" name="mota" placeholder="Nhập">
+                      </div>
+                      <div class="form-group">
+                        <label for="formFile" class="form-label">Hinh Anh</label>
+                         <input class="form-control" type="file" id="formFile" name="hinh">
+                     </div>
+                      <div class="form-group">
+                      <label for="exampleInputEmail3">Trạng thái</label>
+                        <input type="text" class="form-control" name="trangthai" placeholder="Nhập">
                      </div>
 
                       <button type="submit" class="btn btn-primary mr-2">Submit</button>

@@ -14,60 +14,46 @@
                 </ol>
               </nav>
             </div>
-            <div class="row">   
-               @foreach($lstdacsan as $lt)
-              <div class="col-md-6 grid-margin stretch-card">
+            <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                  //--//
-                    <h4 class="card-title">{{$lt->tendacsan}}</h4>
-                    <p class="card-description"> Chi Tiết
-                    </p>
-                    <div class="template-demo">
-                      <form class="row g-3">
-                            <div class="col-md-6">
-                                <label for="inputEmail4" class="form-label">Ten bai viet</label>
-                                <input type="email" class="form-control" id="inputEmail4">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputPassword4" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="inputPassword4">
-                            </div>
-                            <div class="col-12">
-                                <label for="inputAddress" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                            </div>
-                            <div class="col-12">
-                                <label for="inputAddress2" class="form-label">Address 2</label>
-                                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputCity" class="form-label">City</label>
-                                <input type="text" class="form-control" id="inputCity">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="inputState" class="form-label">State</label>
-                                <select id="inputState" class="form-select">
-                                <option selected>Choose...</option>
-                                <option>...</option>
-                                </select>
-                            </div>
-                            <div class="col-md-2">
-                                <label for="inputZip" class="form-label">Zip</label>
-                                <input type="text" class="form-control" id="inputZip">
-                            </div>
-                            
-                            </div>
-                            <div class="d-grid gap-2 d-md-block">
-                                <button class="btn btn-primary" type="button">Sửa </button>
-                                <button class="btn btn-primary" type="button">Xoá</button>
-                              </div>
-                            </form>
-                    </div>
-                   // ---//
+                    <h4 class="card-title">Thêm Quan An Mới </h4>
+                    
+                    <form class="forms-sample" action="{{route('quanan.store')}}" method="post" enctype="multipart/form-data">
+                             @csrf
+                                @if ($message = Session::get('success'))
+                                <div class="alert alert-success">
+                                    <strong>{{ $message }}</strong>
+                                </div>
+                                @endif
+                                @if (count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @endif
+                      <div class="form-group">
+                        <label for="exampleInputEmail3">Tên Quan An </label>
+                        <input type="text" class="form-control" name="tenquanan" placeholder="Nhập">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail3">Dia Chi </label>
+                        <input type="text" class="form-control" name="diachi" placeholder="Nhập">
+                      </div>
+                      <div class="form-group">
+                        <label for="formFile" class="form-label">Hinh Anh</label>
+                         <input class="form-control" type="file" id="formFile" name="hinh">
+                     </div>
+                
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                      <button class="btn btn-dark">Cancel</button>
+                    </form>
                   </div>
                 </div>
-              </div>@endforeach
+              </div>
             </div>
           </div>  
         </div>
@@ -75,4 +61,4 @@
 
 @stop();
 
-
+             

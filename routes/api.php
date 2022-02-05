@@ -1,6 +1,11 @@
 <?php
 
 use App\Http\Controllers\Api\BaiVietApiController;
+use App\Http\Controllers\Api\DacSAnController;
+use App\Http\Controllers\Api\DiaDiemController;
+use App\Http\Controllers\Api\DichVuController;
+use App\Http\Controllers\Api\KhachSanController;
+use App\Http\Controllers\Api\QuanAnController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\VungMienController;
@@ -18,7 +23,11 @@ use Illuminate\Support\Facades\URL;
 |
 */
 
-Route::get('/vungmien',[VungMienController::class,'index'])->name('vungmien.index');
+Route::get('/quanan',[QuanAnController::class,'index'])->name('quanan.index');
+Route::get('/khachsan',[KhachSanController::class,'index'])->name('quanan.index');
+Route::get('/dichvu',[DichVuController::class,'index'])->name('quanan.index');
+Route::get('/dacsan',[DacSAnController::class,'index'])->name('quanan.index');
+Route::get('/diadiem',[DiaDiemController::class,'index'])->name('diadiem.index');
 Route::get('/baiviet',[BaiVietApiController::class,'index'])->name('baiviet.index');
 
 // Route::put(<products/{product}<, <Api\ProductController@update<)->name(<products.update<);
