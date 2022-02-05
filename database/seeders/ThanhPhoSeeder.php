@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\DichVu;
+use App\Models\ThanhPho;
 use Illuminate\Database\Seeder;
 
-class DichVuSeeder extends Seeder
+class ThanhPhoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,12 +15,14 @@ class DichVuSeeder extends Seeder
     public function run()
     {
         for($i=1;$i<=2;$i++)
-         { $dacSan= new DichVu;
+         { $dacSan= new ThanhPho;
           $dacSan->fill(
               [
-                'tendichvu'=>'chay'.$i,
-                'mota'=>'ngon'.$i,
+                'tenthanhpho'=>'banh'.$i,
+                'mota'=>'dep'.$i,
+                'id_vungmien'=>$i,
                 'hinhanh'=>'hinh anh'.$i,
+                'id_diadiem'=>$i,
                 'trangthai'=>$i
               ]
               );
