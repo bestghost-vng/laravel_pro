@@ -19,7 +19,7 @@ class QuanAnController extends Controller
     {
         $quanAn = QuanAn::all();
         
-        return view('quanan.quanan',['quanAn'=>$quanAn,'tendacsan'=>$quanAn->DacSan]);
+        return view('quanan.quanan',['quanAn'=>$quanAn]);
     }
 
     /**
@@ -46,6 +46,7 @@ class QuanAnController extends Controller
             [
                 'tenquanan'=>$request->input('tenquanan'),
                 'diachi'=>$request->input('diachi'),
+                'id_diadiem'=>$request->input('iddiadiem'),
                 'hinhanh'=>'',
             ]
             );
@@ -65,12 +66,12 @@ class QuanAnController extends Controller
 		);
 		
         $get_image=$request->file('hinh');
-        $path='public/upload/quanan';
+        $path='public/upload/quanan/';
         $get_name_images=$get_image->getClientOriginalName();
         $name_images= current(explode('.',$get_name_images));
         $new_images= $name_images.rand(0,99).'.'.$get_image->getClientOriginalExtension();
         $get_image->move($path,$new_images);
-        $quanAn->hinhanh=$new_images;
+        $quanAn->hinhanh=$path.$new_images;
     $quanAn->save();
 }
 
@@ -85,7 +86,7 @@ class QuanAnController extends Controller
      */
     public function show(QuanAn $quanAn)
     {
-      
+      return view('quanan.show',['quanAn'=>$quanAn,'dacsan'=>$quanAn->DacSan]);
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DiaDiemResources;
 use App\Models\DiaDiem;
+use App\Models\QuanAn;
 use Illuminate\Http\Request;
 
 class DiaDiemController extends Controller
@@ -17,8 +18,7 @@ class DiaDiemController extends Controller
     public function index()
     {
         $products = DiaDiem::all();
-    
-        return DiaDiemResources::collection($products);
+        return $products;                                                                   
     }
 
     /**
@@ -38,9 +38,13 @@ class DiaDiemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(DiaDiem $diaDiem)
     {
-        //
+        $diaDiem->QuanAn=QuanAn::where('id_diadiem','=',$diaDiem->id)->get();
+        return ['diadiem'=>[
+           'dichvu'=> $diaDiem->DichVu->tendichvu,
+           'khachsan'=> $diaDiem->KhachSan->tenkhachsan,
+           'quanan'=> $diaDiem->QuanAn]];
     }
 
     /**

@@ -3,7 +3,10 @@
 namespace App\Http\Resources;
 
 use App\Models\DichVu;
+use App\Models\QuanAn;
 use Illuminate\Http\Resources\Json\JsonResource;
+
+use function GuzzleHttp\Promise\all;
 
 class DiaDiemResources extends JsonResource
 {
@@ -21,7 +24,7 @@ class DiaDiemResources extends JsonResource
             'kinhdo'=>$this->kinhdo,
             'vido'=>$this->vido,
             'mieuta'=>$this->mieuta,
-            'tenquanan'=>QuanAnResources::collection($this->tenquanan),
+            // 'quanan'=>QuanAnResources::collection($this->tenquanan),
             // 'tenkhachsan'=>KhachSanResources::collection($this->tenkhachsan),
             // 'tendichvu'=>DichVuResources::collection($this->tendichvu),
         ];

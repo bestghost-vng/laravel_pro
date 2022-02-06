@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\DiaDiem;
+use App\Models\DichVu;
+use App\Models\KhachSan;
+use App\Models\QuanAn;
 use Illuminate\Http\Request;
 class DiaDiemController extends Controller
 {
@@ -14,7 +17,7 @@ class DiaDiemController extends Controller
     public function index()
     {
         $diaDiem= DiaDiem::all(); 
-        return view('diadiem.diadiem',['diaDiem'=>$diaDiem,'tendichvu'=>$diaDiem->DichVu,'tenkhachsan'=>$diaDiem->KhachSan,'tenquanan'=>$diaDiem->QuanAn]);
+        return view('diadiem.diadiem',['diaDiem'=>$diaDiem]);
     }
 
     /**
@@ -60,7 +63,7 @@ class DiaDiemController extends Controller
      */
     public function show(DiaDiem $diaDiem)
     {
-        return view();
+        return view('diadiem.show_id',['diaDiem'=>$diaDiem,'dichvu'=>$diaDiem->DichVu,'khachsan'=>$diaDiem->KhachSan,'quanan'=>$diaDiem->QuanAn]);
     }
 
     /**
@@ -71,7 +74,7 @@ class DiaDiemController extends Controller
      */
     public function edit(DiaDiem $diaDiem)
     {
-        
+        return view('diadiem.sua',['diaDiem'=>$diaDiem]);
     }
 
     /**
@@ -83,7 +86,20 @@ class DiaDiemController extends Controller
      */
     public function update(Request $request, DiaDiem $diaDiem)
     {
-        //
+        $diaDiem->fill(
+            [
+                'tendiadiem'=>$request->input('tendiadiem'),
+                'mieuta'=>$request->input('mieuta'),
+                'kinhdo'=>$request->input('kinhdo'),
+                'vido'=>$request->input('vido'),
+                'quanan_id'=>$request->input('iddacsan'),
+                'dichvu_id'=>$request->input('iddichvu'),
+                'khachsan_id'=>$request->input('idkhachsan'),
+                'trangthai'=>$request->input('trangthai'),
+            ]
+            );
+         $diaDiem->save();
+         return Redirect::route('diadiem.index');
     }
 
     /**

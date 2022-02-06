@@ -10,7 +10,7 @@ class QuanAn extends Model
     use HasFactory;
     protected $guard =[];
     protected $primaryKey = 'id';
-    protected $fillable = ['tenquanan','diachi','hinhanh'];
+    protected $fillable = ['tenquanan','diachi','hinhanh','id_diadiem'];
     public function BaiViet(){
         return $this->hasMany(BaiViet::class,'id_quanan','id');
     }

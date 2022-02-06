@@ -19,7 +19,7 @@ class BaiVietApiController extends Controller
     {
         $products = ModelsBaiViet::all();
     
-        return BaiVietResources::collection($products);
+        return $products;
     }
 
     /**

@@ -101,6 +101,7 @@
                 <li class="nav-item"> <a class="nav-link" href="~/resources/views/hinh.blade.php">Hình</a></li>
                 <li class="nav-item"> <a class="nav-link" href="~/resources/views/dichvu.blade.php">Dịch vụ</a></li>
                 <li class="nav-item"> <a class="nav-link" href="~/resources/views/diadiem.blade.php">Thành Phố</a></li>
+                
               </ul>
             </div>
           </li>

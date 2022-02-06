@@ -14,6 +14,6 @@ class DichVu extends Model
         return $this->hasMany(BaiViet::class);
     }
     public function DiaDiem(){
-        return $this->belongsTo(DiaDiem::class);
+        return $this->hasMany(DiaDiem::class);
     }
 }

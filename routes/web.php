@@ -62,13 +62,13 @@ Route::put('/dacsan/edit/{dacSan}',[DacSanController::class,'update'])->name('da
 Route::get('/dacsan/delete/{dacsan}',[DacSanController::class,'destroy'])->name('dacsan.destroy');
 
 //diadiem
-
-Route::get('/diadiem',[DiaDiemController::class,'index'])->name('diadiem.show');;
+Route::get('/diadiem/Show/{diaDiem}',[DiaDiemController::class,'show'])->name('diadiem.show');
+Route::get('/diadiem',[DiaDiemController::class,'index'])->name('diadiem.index');
 Route::get('/diadiem/create',[DiaDiemController::class,'create'])->name('diadiem.create');
 Route::post('/diadiem/create',[DiaDiemController::class,'store'])->name('diadiem.store');
 Route::get('/diadiem/edit/{diaDiem}',[DiaDiemController::class,'edit'])->name('diadiem.edit');
 Route::put('/diadiem/edit/{diaDiem}',[DiaDiemController::class,'update'])->name('diadiem.update');
-Route::get('/diadiem/delete/{diaDiem}',[DiaDiemController::class,'destroy'])->name('diadiem.destroy');
+Route::get('/diadiem/{diaDiem}/delete',[DiaDiemController::class,'destroy'])->name('diadiem.destroy');
 
 // khachsan
 Route::get('/khachsan',[KhachSanController::class,'index'])->name('khachsan.show');

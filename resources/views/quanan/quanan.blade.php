@@ -27,7 +27,7 @@
             <tbody>
              @foreach($quanAn as $lt)
               <tr>
-                <th scope="col"> <img src="public/upload/quanan/{{$lt->hinhanh}}" class="card-img-top" style="width:100px;max-height:100px;object-fit:contain"></th>
+                <th scope="col"> <img src="{{$lt->hinhanh}}" class="card-img-top" style="width:100px;max-height:100px;object-fit:contain"></th>
                 <th scope="col">{{$lt->tenquanan}}</th>
                 <th scope="col">{{$lt->diachi}}</th>
                 <th scope="col"><div class="card-body">

@@ -72,7 +72,7 @@ class BaiVietController extends Controller
      */
     public function edit(BaiViet $baiViet)
     {
-        // return view('baiviet.baiviet-edit',['baiViet'=>$baiViet,'tenquanan'=>$baiViet->QuanAn,'tendiadiem'=>$baiViet->DiaDiem,'tenkhachsan'=>$baiViet->KhachSan,'tendacsan'=>$baiViet->DacSan,'tennguoidung'=>$baiViet->User]);
+        
     }
 
     /**
@@ -85,18 +85,7 @@ class BaiVietController extends Controller
     public function update(Request $request, BaiViet $baiViet)
     {
         
-        // $baiViet->fill(
-        //     [
-        //         'noi_dung'=>$request->input('noidung'),
-        //         'id_quanan'=>$request->input('tenquanan'),
-        //         'id_dacsan'=>$request->input('tendacsan'),
-        //         'id_diadiem'=>$request->input('tendiadiem'),
-        //         'id_dichvu'=>$request->input('tendichvu'),
-        //         'id_nguoidung'=>$request->input('tennguoidung'),
-        //     ]
-        //     );
-        //   $baiViet->save();
-        //   return Redirect::route('baiviet.baiviet-detail',['baiViet'=>$baiViet]);
+       
     }
 
     /**

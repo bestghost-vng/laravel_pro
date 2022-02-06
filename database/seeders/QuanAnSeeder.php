@@ -21,7 +21,7 @@ class QuanAnSeeder extends Seeder
                 'tenquanan'=>'banh'.$i,
                 
                 'hinhanh'=>'hinh anh'.$i,
-                
+                'id_diadiem'=>$i,
                 'diachi'=>$i,
               ]
               );

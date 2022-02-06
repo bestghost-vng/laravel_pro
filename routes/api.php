@@ -28,6 +28,7 @@ Route::get('/khachsan',[KhachSanController::class,'index'])->name('quanan.index'
 Route::get('/dichvu',[DichVuController::class,'index'])->name('quanan.index');
 Route::get('/dacsan',[DacSAnController::class,'index'])->name('quanan.index');
 Route::get('/diadiem',[DiaDiemController::class,'index'])->name('diadiem.index');
+Route::get('/diadiem/show/{diaDiem}',[DiaDiemController::class,'show'])->name('diadiem.show');
 Route::get('/baiviet',[BaiVietApiController::class,'index'])->name('baiviet.index');
 
 // Route::put(<products/{product}<, <Api\ProductController@update<)->name(<products.update<);

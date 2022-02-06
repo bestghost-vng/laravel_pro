@@ -42,6 +42,9 @@
                       <div class="form-group">
                         <label for="exampleInputEmail3">Dia Chi </label>
                         <input type="text" class="form-control" name="diachi" placeholder="Nhập">
+                      </div><div class="form-group">
+                        <label for="exampleInputEmail3">STT Dia Diem </label>
+                        <input type="text" class="form-control" name="iddiadiem" placeholder="Nhập">
                       </div>
                       <div class="form-group">
                         <label for="formFile" class="form-label">Hinh Anh</label>

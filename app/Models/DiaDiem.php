@@ -15,13 +15,13 @@ class DiaDiem extends Model
         return $this->hasMany(BaiViet::class);
     }
     public function QuanAn(){
-        return $this->hasMany(QuanAn::class);
+        return $this->belongsTo(QuanAn::class,'quanan_id','id');
     }
     public function DichVu(){
-        return $this->hasMany(DichVu::class);
+        return $this->belongsTo(DichVu::class,'dichvu_id','id');
     }
     public function KhachSan(){
-        return $this->hasMany(KhachSan::class);
+        return $this->belongsTo(KhachSan::class,'khachsan_id','id');
     }
 }
  

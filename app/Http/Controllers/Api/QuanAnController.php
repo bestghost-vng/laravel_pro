@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\QuanAnResources;
+use App\Models\DiaDiem;
 use App\Models\QuanAn;
 use Illuminate\Http\Request;
-
 class QuanAnController extends Controller
 {
     /**
@@ -17,8 +17,8 @@ class QuanAnController extends Controller
     public function index()
     {
         $products = QuanAn::all();
-    
-        return QuanAnResources::collection($products);
+        
+        return $products;
     }
 
     /**
@@ -38,7 +38,7 @@ class QuanAnController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(QuanAn $quanAn)
     {
         //
     }
