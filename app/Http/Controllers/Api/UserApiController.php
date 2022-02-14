@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\DichVuResources;
-use App\Models\DichVu;
 use Illuminate\Http\Request;
-
-class DichVuController extends Controller
+use App\Models\User;
+class UserApiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,7 @@ class DichVuController extends Controller
      */
     public function index()
     {
-       return DichVu::all();
+     return User::all();
     }
 
     /**

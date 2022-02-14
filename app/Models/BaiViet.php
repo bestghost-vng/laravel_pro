@@ -10,36 +10,35 @@ class BaiViet extends Model
     use HasFactory;
     protected $fillable = [
         'id',
-        'ngaydang',
-        'tenquanan',
-        'tendiadiem',
-        'tendacsan',
-        'tennguoidang',
-        'tenkhachsan'
-        
+        'noi_dung',
+        'trangthai',
+        'like',
+        'dislike',
+        'view',
+        'id_diadiem',
+        'id_nguoidung',
+
     ];
     protected $guard =[];
-    public function DichVu(){
-        return $this->belongsTo(DichVu::class,'id_dichvu','id');
-    }
-    public function QuanAn(){
-        return $this->belongsTo(QuanAn::class,'id_quanan','id');
-    }
-    public function KhachSan()
-    {
-        return $this->belongsTo(KhachSan::class,'id_khachsan','id');
-    }
+
     public function DiaDiem(){
         return $this->belongsTo(DiaDiem::class,'id_diadiem','id');
-    }
-    public function DacSan(){
-        return $this->belongsTo(DacSan::class,'id_dacsan','id');
     }
     public function User(){
         return $this->belongsTo(User::class,'id_nguoidung','id');
     }
+    
     public function HinhBaiViet(){
         return $this->hasMany(HinhBaiViet::class);
+    }
+    public function Like(){
+        return $this->belongsTo(Like::class);
+    }
+    public function DisLike(){
+        return $this->belongsTo(Disklike::class);
+    }
+    public function View(){
+        return $this->belongsTo(View::class);
     }
 }
    

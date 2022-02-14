@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\DichVuResources;
-use App\Models\DichVu;
+use App\Models\Disklike;
 use Illuminate\Http\Request;
 
-class DichVuController extends Controller
+class DisLikeApiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class DichVuController extends Controller
      */
     public function index()
     {
-       return DichVu::all();
+      return Disklike::all();
     }
 
     /**
@@ -27,7 +26,16 @@ class DichVuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $like= new Disklike;
+        $like->fill(
+            [
+                'id_baiviet'=>$request->input('idbaiviet'),
+                'id_nguoidung'=>$request->input('idnguoidung'),
+                'luotdislike'=>$request->input('dislike'),
+            ]
+            );
+        $like->save();
+        return $like;
     }
 
     /**
@@ -48,9 +56,17 @@ class DichVuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Disklike $dislike)
     {
-        //
+        $dislike->fill(
+            [
+                'id_baiviet'=>$request->input('idbaiviet'),
+                'id_nguoidung'=>$request->input('idnguoidung'),
+                'luotlike'=>$request->input('like'),
+            ]
+            );
+        $dislike->save();
+        return $dislike;
     }
 
     /**
@@ -59,8 +75,8 @@ class DichVuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Disklike $dislike)
     {
-        //
+        
     }
 }

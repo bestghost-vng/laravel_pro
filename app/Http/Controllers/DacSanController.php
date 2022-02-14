@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\DacSan;
 use App\Models\HinhAnhDacSan;
+use App\Models\View;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 class DacSanController extends Controller
@@ -108,15 +109,39 @@ class DacSanController extends Controller
      */
     public function update(Request $request, DacSan $dacSan)
     {
+       
         $dacSan->fill(
             [
                 'tendacsan'=>$request->input('tendacsan'),
                 'mota'=>$request->input('mota'),
                 'gia'=>$request->input('gia'),
                 'trangthai'=>$request->input('trangthai'),
-            ]
-            );
-         $dacSan->save();
+            ] 
+            );$dacSan->save();
+            if($request->hasFile('hinh')){
+                //Hàm kiểm tra dữ liệu
+                $this->validate($request, 
+                    [
+                        //Kiểm tra đúng file đuôi .jpg,.jpeg,.png.gif và dung lượng không quá 2M
+                        'hinh' => 'mimes:jpg,jpeg,png,gif|max:2048',
+                    ],			
+                    [
+                        //Tùy chỉnh hiển thị thông báo không thõa điều kiện
+                        'hinh.mimes' => 'Chỉ chấp nhận hình thẻ với đuôi .jpg .jpeg .png .gif',
+                        'hinh.max' => 'Hình thẻ giới hạn dung lượng không quá 2M',
+                    ]
+                );
+                
+                $get_image=$request->file('hinh');
+                $path='public/upload/dacsan';
+                $get_name_images=$get_image->getClientOriginalName();
+                $name_images= current(explode('.',$get_name_images));
+                $new_images= $name_images.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+                $get_image->move($path,$new_images);
+            $dacSan->hinhanh=$new_images;
+            $dacSan->save();
+        }
+        
          
         return Redirect::route('dacsan.show');
     }
@@ -129,6 +154,7 @@ class DacSanController extends Controller
      */
     public function destroy(DacSan $dacSan)
     {
-        //
+        $dacSan->delete();
+        return Redirect::to('dacsan');
     }
 }

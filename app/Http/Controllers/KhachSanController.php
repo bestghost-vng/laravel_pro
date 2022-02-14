@@ -43,6 +43,7 @@ class KhachSanController extends Controller
                 'tenkhachsan'=>$request->input('tenkhachsan'),
                 'diachi'=>$request->input('diachi'),
                 'hinhanh'=>'',
+                'id_diadiem'=>$request->input('iddiadiem'),               
                 'danhgia'=>$request->input('danhgia'),
                 'trangthai'=>$request->input('trangthai'),
             ]
@@ -114,6 +115,28 @@ class KhachSanController extends Controller
             ]
             );
          $khachSan->save();
+         if($request->hasFile('hinh')){
+            //Hàm kiểm tra dữ liệu
+            $this->validate($request, 
+                [
+                    //Kiểm tra đúng file đuôi .jpg,.jpeg,.png.gif và dung lượng không quá 2M
+                    'hinh' => 'mimes:jpg,jpeg,png,gif|max:2048',
+                ],			
+                [
+                    //Tùy chỉnh hiển thị thông báo không thõa điều kiện
+                    'hinh.mimes' => 'Chỉ chấp nhận hình thẻ với đuôi .jpg .jpeg .png .gif',
+                    'hinh.max' => 'Hình thẻ giới hạn dung lượng không quá 2M',
+                ]
+            );
+            
+            $get_image=$request->file('hinh');
+            $path='public/upload/khachsan';
+            $get_name_images=$get_image->getClientOriginalName();
+            $name_images= current(explode('.',$get_name_images));
+            $new_images= $name_images.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+            $get_image->move($path,$new_images);
+        $khachSan->hinhanh=$new_images;
+        $khachSan->save();}
          return Redirect::route('khachsan.show');
     }
 
@@ -125,6 +148,7 @@ class KhachSanController extends Controller
      */
     public function destroy(KhachSan $khachSan)
     {
-        //
+        $khachSan->delete();
+        return Redirect::to('khachsan');
     }
 }

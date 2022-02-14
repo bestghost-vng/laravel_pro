@@ -5,10 +5,14 @@ use App\Http\Controllers\Api\DacSAnController;
 use App\Http\Controllers\Api\DiaDiemController;
 use App\Http\Controllers\Api\DichVuController;
 use App\Http\Controllers\Api\KhachSanController;
+use App\Http\Controllers\Api\LikeApiController;
 use App\Http\Controllers\Api\QuanAnController;
+use App\Http\Controllers\Api\ThanhPhoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\VungMienController;
+use App\Models\BaiViet;
+use App\Models\ThanhPho;
 use Illuminate\Support\Facades\URL;
 
 
@@ -23,17 +27,24 @@ use Illuminate\Support\Facades\URL;
 |
 */
 
-Route::get('/quanan',[QuanAnController::class,'index'])->name('quanan.index');
-Route::get('/khachsan',[KhachSanController::class,'index'])->name('quanan.index');
-Route::get('/dichvu',[DichVuController::class,'index'])->name('quanan.index');
-Route::get('/dacsan',[DacSAnController::class,'index'])->name('quanan.index');
+Route::apiResource('vungmien','Api\VungMienController');
+// Route::apiResource('baiviet','Api\BaiVietApiController');
+Route::get('/baiviet',[BaiVietApiController::class,'index']);
+Route::get('/baiviet/show/{baiViet}',[BaiVietApiController::class,'show']); 
+
+Route::match(['put', 'patch'], 'baiviet/{baiViet}', [BaiVietApiController::class, 'update'])->name('baiviet.update');
+Route::get('baiviet/{baiViet}', [BaiVietApiController::class, 'destroy'])->name('baiviet.destroy');
+Route::apiResource('quanan','Api\QuanAnController');
+Route::apiResource('khachsan','Api\KhachSanController');
+// Route::apiResource('thanhpho','Api\ThanhPhoController');
+Route::get('/thanhpho/show/{thanhPho}',[ThanhPhoController::class,'show'])->name('thanhpho.show');
+Route::get('/dichvu',[DichVuController::class,'index']);
+Route::apiResource('dacsan','Api\DacSanController');
+// Route::apiResource('diadiem','Api\DiaDiemController');
 Route::get('/diadiem',[DiaDiemController::class,'index'])->name('diadiem.index');
 Route::get('/diadiem/show/{diaDiem}',[DiaDiemController::class,'show'])->name('diadiem.show');
-Route::get('/baiviet',[BaiVietApiController::class,'index'])->name('baiviet.index');
+Route::apiResource('user','Api\UserApiController');
+Route::apiResource('thanhpho','Api\ThanhPhoController');
 
-// Route::put(<products/{product}<, <Api\ProductController@update<)->name(<products.update<);
-
-// Route::patch(<products/{product}<, <Api\ProductController@update<)->name(<products.update<);
-
-// Route::delete(<products/{product}<, <Api\ProductController@destroy<)->name(<products.destroy<);
-
+Route::get('/like',[LikeApiController::class,'index']);
+Route::post('/like/update',[LikeApiController::class,'update']);

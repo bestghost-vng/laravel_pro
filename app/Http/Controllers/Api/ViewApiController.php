@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DichVuResources;
-use App\Models\DichVu;
+use App\Models\View;
 use Illuminate\Http\Request;
 
-class DichVuController extends Controller
+class ViewApiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class DichVuController extends Controller
      */
     public function index()
     {
-       return DichVu::all();
+      return View::all();
     }
 
     /**
@@ -27,7 +27,16 @@ class DichVuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $view= new View;
+        $view->fill(
+            [
+                'id_baiviet'=>$request->input('idbaiviet'),
+                'id_nguoidung'=>$request->input('idnguoidung'),
+                'luotview'=>$request->input('view'),
+            ]
+            );
+        $view->save();
+        return $view;
     }
 
     /**
@@ -48,9 +57,17 @@ class DichVuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, View $view)
     {
-        //
+        $view->fill(
+            [
+                'id_baiviet'=>$request->input('idbaiviet'),
+                'id_nguoidung'=>$request->input('idnguoidung'),
+                'luotlike'=>$request->input('like'),
+            ]
+            );
+        $view->save();
+        return $view;
     }
 
     /**
@@ -59,8 +76,8 @@ class DichVuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(View $view)
     {
-        //
+        
     }
 }

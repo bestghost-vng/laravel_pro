@@ -7,9 +7,15 @@ use Illuminate\Support\Facades\Redirect;
 
 use App\Models\HinhQuanAn;
 use Illuminate\Http\Request;
+use Kreait\Firebase\Database;
 
 class QuanAnController extends Controller
 {
+    public function __construct(Database $database)
+    {
+        $this->database = $database;
+        $this->tablename= 'Quanan';
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +24,8 @@ class QuanAnController extends Controller
     public function index()
     {
         $quanAn = QuanAn::all();
-        
+        // $quanAn = $this->database->getReference($this->tablename)->getValue();
+    
         return view('quanan.quanan',['quanAn'=>$quanAn]);
     }
 
@@ -41,7 +48,7 @@ class QuanAnController extends Controller
      */
     public function store(Request $request)
     {
-     $quanAn= new QuanAn;
+    $quanAn= new QuanAn;
     $quanAn->fill(
             [
                 'tenquanan'=>$request->input('tenquanan'),
@@ -73,6 +80,7 @@ class QuanAnController extends Controller
         $get_image->move($path,$new_images);
         $quanAn->hinhanh=$path.$new_images;
     $quanAn->save();
+    $puss =$this->database->getReference($this->tablename)->push($quanAn);
 }
 
          return Redirect::route('quanan.show');
@@ -116,6 +124,30 @@ class QuanAnController extends Controller
             ]
             );
          $quanAn->save();
+         if($request->hasFile('hinh')){
+            //Hàm kiểm tra dữ liệu
+            $this->validate($request, 
+                [
+                    //Kiểm tra đúng file đuôi .jpg,.jpeg,.png.gif và dung lượng không quá 2M
+                    'hinh' => 'mimes:jpg,jpeg,png,gif|max:2048',
+                ],			
+                [
+                    //Tùy chỉnh hiển thị thông báo không thõa điều kiện
+                    'hinh.mimes' => 'Chỉ chấp nhận hình thẻ với đuôi .jpg .jpeg .png .gif',
+                    'hinh.max' => 'Hình thẻ giới hạn dung lượng không quá 2M',
+                ]
+            );
+            
+            $get_image=$request->file('hinh');
+            $path='public/upload/quanan/';
+            $get_name_images=$get_image->getClientOriginalName();
+            $name_images= current(explode('.',$get_name_images));
+            $new_images= $name_images.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+            $get_image->move($path,$new_images);
+            $quanAn->hinhanh=$path.$new_images;
+        $quanAn->save();
+        $puss =$this->database->getReference($this->tablename)->push($quanAn);
+    }
         return Redirect::route('quanan.show');
     }
 
@@ -128,6 +160,6 @@ class QuanAnController extends Controller
     public function destroy(QuanAn $quanAn)
     {
         $quanAn->delete();
-        return Redirect::route('quanan.show');
+        return Redirect::to('quanan');
     }
 }

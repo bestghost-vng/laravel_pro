@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\VungMien;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use App\Http\Resources\VungMienResources;
 class VungMienController extends Controller
 {
@@ -16,9 +15,7 @@ class VungMienController extends Controller
      */
     public function index()
     {
-        $vungMien = VungMien::all();
-
-        return VungMienResources::collection($vungMien);
+       return VungMien::all();
     }
 
     /**
@@ -29,9 +26,17 @@ class VungMienController extends Controller
      */
     public function store(Request $request)
     {
-        $vungMien =VungMien::create($request->all());
-
-        return new VungMienResources($vungMien);
+    //     $request->validate([
+    //         'tenvung'=>'required',
+    //     ],[
+    //         'tenvung'=>'không được bỏ trống',
+    //     ]);
+      
+       
+    //    $vungMien = new VungMien();
+    //    $vungMien->tenvung=$request->input('tenvung');
+    //    $vungMien->save();
+    //    return $vungMien;
     }
 
     /**
@@ -42,7 +47,7 @@ class VungMienController extends Controller
      */
     public function show(VungMien $vungMien)
     {
-        return new VungMienResources($vungMien);
+     
     }
 
     /**
@@ -54,7 +59,7 @@ class VungMienController extends Controller
      */
     public function update(Request $request,VungMien $vungMien)
     {
-        return $vungMien->update($request->all());
+        
     }
 
     /**

@@ -3,7 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-
+use Illuminate\Http\Request;
 class QuanAnResources extends JsonResource
 {
     /**
@@ -17,7 +17,7 @@ class QuanAnResources extends JsonResource
         return [
             'id'=>$this->id,
             'tenquanan'=>$this->tenquanan,
-            'hinhanh'=>$this->hinhanh,
+            'hinhanh'=>$request->path($this->hinhanh),
           ];
     }
 }

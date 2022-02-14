@@ -17,6 +17,7 @@ class VungMienResources extends JsonResource
         return [
             'id'=> $this->id,
             'tenvung'=> $this->tenvung,
+            
         ];
     }
 }

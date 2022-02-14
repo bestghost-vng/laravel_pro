@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DiaDiemResources;
 use App\Models\DiaDiem;
+use App\Models\DichVu;
+use App\Models\KhachSan;
 use App\Models\QuanAn;
+use App\Models\ThanhPho;
 use Illuminate\Http\Request;
 
 class DiaDiemController extends Controller
@@ -41,10 +44,15 @@ class DiaDiemController extends Controller
     public function show(DiaDiem $diaDiem)
     {
         $diaDiem->QuanAn=QuanAn::where('id_diadiem','=',$diaDiem->id)->get();
+        $diaDiem->KhachSan=KhachSan::where('id_diadiem','=',$diaDiem->id)->get();
+        $diaDiem->DichVu=DichVu::where('id_diadiem','=',$diaDiem->id)->get();
+        $diaDiem->ThanhPho= ThanhPho::where('id_diadiem','=',$diaDiem->id)->get();
         return ['diadiem'=>[
-           'dichvu'=> $diaDiem->DichVu->tendichvu,
-           'khachsan'=> $diaDiem->KhachSan->tenkhachsan,
-           'quanan'=> $diaDiem->QuanAn]];
+           'dichvu'=> $diaDiem->DichVu,
+           'khachsan'=> $diaDiem->KhachSan,
+           'quanan'=> $diaDiem->QuanAn,
+           'thanhpho'=>$diaDiem->ThanhPho,
+           ]];
     }
 
     /**

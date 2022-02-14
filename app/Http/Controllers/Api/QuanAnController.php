@@ -16,9 +16,7 @@ class QuanAnController extends Controller
      */
     public function index()
     {
-        $products = QuanAn::all();
-        
-        return $products;
+       return QuanAn::all();
     }
 
     /**
@@ -29,7 +27,7 @@ class QuanAnController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    
     }
 
     /**

@@ -16,9 +16,7 @@ class DacSAnController extends Controller
      */
     public function index()
     {
-        $products = DacSan::all();
-    
-        return DacSanResources::collection($products);
+       return DacSan::all();
     }
 
     /**

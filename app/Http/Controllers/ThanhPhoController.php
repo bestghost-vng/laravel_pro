@@ -43,6 +43,7 @@ class ThanhPhoController extends Controller
                     'mota'=>$request->input('mota'),
                     'hinhanh'=>'',
                     'id_vungmien'=>$request->input('idvung'),
+                    'id_diadiem'=>$request->input('iddiadiem'),
                     'trangthai'=>$request->input('trangthai'),
                 ]
                 );
@@ -109,12 +110,35 @@ class ThanhPhoController extends Controller
             [
                 'tenthanhpho'=>$request->input('tenthanhpho'),
                 'mota'=>$request->input('mota'),
-        
+                'id_diadiem'=>$request->input('iddiadiem'),
                 'id_vungmien'=>$request->input('idvung'),
                 'trangthai'=>$request->input('trangthai'),
             ]
             );
          $thanhPho->save();
+         if($request->hasFile('hinh')){
+            //Hàm kiểm tra dữ liệu
+            $this->validate($request, 
+                [
+                    //Kiểm tra đúng file đuôi .jpg,.jpeg,.png.gif và dung lượng không quá 2M
+                    'hinh' => 'mimes:jpg,jpeg,png,gif|max:2048',
+                ],			
+                [
+                    //Tùy chỉnh hiển thị thông báo không thõa điều kiện
+                    'hinh.mimes' => 'Chỉ chấp nhận hình thẻ với đuôi .jpg .jpeg .png .gif',
+                    'hinh.max' => 'Hình thẻ giới hạn dung lượng không quá 2M',
+                ]
+            );
+            
+            $get_image=$request->file('hinh');
+            $path='public/upload/thanhpho';
+            $get_name_images=$get_image->getClientOriginalName();
+            $name_images= current(explode('.',$get_name_images));
+            $new_images= $name_images.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+            $get_image->move($path,$new_images);
+            $thanhPho->hinhanh=$new_images;
+        $thanhPho->save();
+    }
          return Redirect::route('thanhpho.show');
     }
 
@@ -126,6 +150,7 @@ class ThanhPhoController extends Controller
      */
     public function destroy(ThanhPho $thanhPho)
     {
-        //
+        $thanhPho->delete();
+        return Redirect::to('thanhpho');
     }
 }

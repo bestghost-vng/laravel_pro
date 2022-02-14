@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\DichVuResources;
-use App\Models\DichVu;
+use App\Models\DiaDiem;
+use App\Models\ThanhPho;
 use Illuminate\Http\Request;
-
-class DichVuController extends Controller
+class ThanhPhoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class DichVuController extends Controller
      */
     public function index()
     {
-       return DichVu::all();
+       return ThanhPho::all();
     }
 
     /**
@@ -27,7 +26,17 @@ class DichVuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    //     $request->validate([
+    //         'tenvung'=>'required',
+    //     ],[
+    //         'tenvung'=>'không được bỏ trống',
+    //     ]);
+      
+       
+    //    $vungMien = new VungMien();
+    //    $vungMien->tenvung=$request->input('tenvung');
+    //    $vungMien->save();
+    //    return $vungMien;
     }
 
     /**
@@ -36,9 +45,15 @@ class DichVuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ThanhPho $thanhPho)
     {
-        //
+  
+     return[
+         'thanhpho'=>[
+             'diadiem'=>$thanhPho->DiaDiem,
+             'vungmien'=>$thanhPho->VunnMien,
+         ]
+         ];
     }
 
     /**
@@ -48,9 +63,9 @@ class DichVuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,ThanhPho $vungMien)
     {
-        //
+        
     }
 
     /**
@@ -59,8 +74,8 @@ class DichVuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ThanhPho $vungMien)
     {
-        //
+        $vungMien->delete();
     }
 }

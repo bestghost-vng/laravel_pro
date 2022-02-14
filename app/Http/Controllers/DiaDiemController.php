@@ -45,6 +45,7 @@ class DiaDiemController extends Controller
                     'mieuta'=>$request->input('mieuta'),
                     'kinhdo'=>$request->input('kinhdo'),
                     'vido'=>$request->input('vido'),
+                    'hinhanh'=>'',
                     'quanan_id'=>$request->input('iddacsan'),
                     'dichvu_id'=>$request->input('iddichvu'),
                     'khachsan_id'=>$request->input('idkhachsan'),
@@ -52,6 +53,28 @@ class DiaDiemController extends Controller
                 ]
                 );
              $diaDiem->save();
+             if($request->hasFile('hinh')){
+                //Hàm kiểm tra dữ liệu
+                $this->validate($request, 
+                    [
+                        //Kiểm tra đúng file đuôi .jpg,.jpeg,.png.gif và dung lượng không quá 2M
+                        'hinh' => 'mimes:jpg,jpeg,png,gif|max:2048',
+                    ],			
+                    [
+                        //Tùy chỉnh hiển thị thông báo không thõa điều kiện
+                        'hinh.mimes' => 'Chỉ chấp nhận hình thẻ với đuôi .jpg .jpeg .png .gif',
+                        'hinh.max' => 'Hình thẻ giới hạn dung lượng không quá 2M',
+                    ]
+                );
+                
+                $get_image=$request->file('hinh');
+                $path='public/upload/diadiem';
+                $get_name_images=$get_image->getClientOriginalName();
+                $name_images= current(explode('.',$get_name_images));
+                $new_images= $name_images.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+                $get_image->move($path,$new_images);
+            $diaDiem->hinhanh=$new_images;
+            $diaDiem->save();}
              return Redirect::route('diadiem.show');
     }
 
@@ -63,7 +86,14 @@ class DiaDiemController extends Controller
      */
     public function show(DiaDiem $diaDiem)
     {
-        return view('diadiem.show_id',['diaDiem'=>$diaDiem,'dichvu'=>$diaDiem->DichVu,'khachsan'=>$diaDiem->KhachSan,'quanan'=>$diaDiem->QuanAn]);
+        $diaDiem->QuanAn=QuanAn::where('id_diadiem','=',$diaDiem->id)->get();
+        $diaDiem->KhachSan=KhachSan::where('id_diadiem','=',$diaDiem->id)->get();
+        $diaDiem->DichVu=DichVu::where('id_diadiem','=',$diaDiem->id)->get();
+        return view('diadiem.show_id',[
+           'diaDiem'=>$diaDiem,
+           'dichvu'=> $diaDiem->DichVu,
+           'khachsan'=> $diaDiem->KhachSan,
+           'quanan'=> $diaDiem->QuanAn]);
     }
 
     /**
@@ -99,6 +129,28 @@ class DiaDiemController extends Controller
             ]
             );
          $diaDiem->save();
+         if($request->hasFile('hinh')){
+            //Hàm kiểm tra dữ liệu
+            $this->validate($request, 
+                [
+                    //Kiểm tra đúng file đuôi .jpg,.jpeg,.png.gif và dung lượng không quá 2M
+                    'hinh' => 'mimes:jpg,jpeg,png,gif|max:2048',
+                ],			
+                [
+                    //Tùy chỉnh hiển thị thông báo không thõa điều kiện
+                    'hinh.mimes' => 'Chỉ chấp nhận hình thẻ với đuôi .jpg .jpeg .png .gif',
+                    'hinh.max' => 'Hình thẻ giới hạn dung lượng không quá 2M',
+                ]
+            );
+            
+            $get_image=$request->file('hinh');
+            $path='public/upload/diadiem';
+            $get_name_images=$get_image->getClientOriginalName();
+            $name_images= current(explode('.',$get_name_images));
+            $new_images= $name_images.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+            $get_image->move($path,$new_images);
+        $diaDiem->hinhanh=$new_images;
+        $diaDiem->save();}
          return Redirect::route('diadiem.index');
     }
 
@@ -110,6 +162,7 @@ class DiaDiemController extends Controller
      */
     public function destroy(DiaDiem $diaDiem)
     {
-        //
+       $diaDiem->delete();
+       return Redirect::to('diadiem');
     }
 }

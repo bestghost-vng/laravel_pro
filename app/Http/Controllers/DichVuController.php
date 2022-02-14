@@ -48,6 +48,7 @@ class DichVuController extends Controller
            'tendichvu'=>$request->input('tendichvu'),
            'mota'=>$request->input('mota'),
            'hinhanh'=>'',
+           'id_diadiem'=>$request->input('iddiadiem'),
            'trangthai'=>$request->input('trangthai'),
        ]
        );
@@ -116,6 +117,28 @@ class DichVuController extends Controller
             ]
             );
          $dichVu->save();
+         if($request->hasFile('hinh')){
+            //Hàm kiểm tra dữ liệu
+            $this->validate($request, 
+                [
+                    //Kiểm tra đúng file đuôi .jpg,.jpeg,.png.gif và dung lượng không quá 2M
+                    'hinh' => 'mimes:jpg,jpeg,png,gif|max:2048',
+                ],			
+                [
+                    //Tùy chỉnh hiển thị thông báo không thõa điều kiện
+                    'hinh.mimes' => 'Chỉ chấp nhận hình thẻ với đuôi .jpg .jpeg .png .gif',
+                    'hinh.max' => 'Hình thẻ giới hạn dung lượng không quá 2M',
+                ]
+            );
+            
+            $get_image=$request->file('hinh');
+            $path='public/upload/dichvu';
+            $get_name_images=$get_image->getClientOriginalName();
+            $name_images= current(explode('.',$get_name_images));
+            $new_images= $name_images.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+            $get_image->move($path,$new_images);
+        $dichVu->hinhanh=$new_images;
+        $dichVu->save();}
          return Redirect::route('dichvu.show');
     }
 
@@ -128,6 +151,6 @@ class DichVuController extends Controller
     public function destroy(DichVu $dichVu)
     {
         $dichVu->delete();
-        return Redirect::route('dichvu.show');
+        return Redirect::to('dichvu');
     }
 }

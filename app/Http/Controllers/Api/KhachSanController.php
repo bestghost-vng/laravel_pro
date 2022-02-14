@@ -16,9 +16,7 @@ class KhachSanController extends Controller
      */
     public function index()
     {
-        $products = KhachSan::all();
-    
-        return KhachSanResources::collection($products);
+       return KhachSan::all();
     }
 
     /**
