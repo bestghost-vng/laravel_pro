@@ -6,11 +6,11 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Typography </h3>
+              <h3 class="page-title"> Dịch Vụ </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">UI Elements</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Typography</li>
+                  <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Dịch Vụ</li>
                 </ol>
               </nav>
             </div>
@@ -44,7 +44,10 @@
                       <label for="exampleInputEmail3">Mô Tả</label>
                         <input type="text" class="form-control" name="mota" value="{{$dichVu->mota}}">
                      </div>
-
+                       <div class="form-group">
+                      <label for="exampleInputEmail3">Hìnhảnh</label>
+                        <input type="file" class="form-control" name="hinh" value="{{$dichCu->hinhanh}}">
+                     </div>
                       <div class="form-group">
                       <label for="exampleInputEmail3">Trạng thái</label>
                         <input type="text" class="form-control" name="trangthai" value="{{$dichVu->trangthai}}">

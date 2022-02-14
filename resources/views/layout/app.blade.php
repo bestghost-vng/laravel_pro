@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" />
+    
 </head>
 <body>
 <div class="container-scroller">
@@ -97,10 +98,14 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link"href="" >Bài Viết</a></li>
-                <li class="nav-item"> <a class="nav-link" href="~/resources/views/hinh.blade.php">Hình</a></li>
-                <li class="nav-item"> <a class="nav-link" href="~/resources/views/dichvu.blade.php">Dịch vụ</a></li>
-                <li class="nav-item"> <a class="nav-link" href="~/resources/views/diadiem.blade.php">Thành Phố</a></li>
+                <li class="nav-item"> <a class="nav-link"href="{{route('baiviet.show')}}" >Bài Viết</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('diadiem.index')}}">Địa Điểm</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('dichvu.show')}}">Dịch vụ</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('khachsan.show')}}">Khách Sạn</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('quanan.show')}}">Quán Ăn</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('dacsan.show')}}">Dặc Sản</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('thanhpho.show')}}">Thành Phố</a></li>
+               
                 
               </ul>
             </div>
@@ -110,7 +115,7 @@
               <span class="menu-icon">
                 <i class="mdi mdi-chart-bar"></i>
               </span>
-              <span class="menu-title">Charts</span>
+              <span class="menu-title">Thống Kê</span>
             </a>
           </li>
         </ul>
@@ -339,6 +344,12 @@
     <script src="assets/js/misc.js"></script>
     <script src="assets/js/settings.js"></script>
     <script src="assets/js/todolist.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script defer src="./init-firebase.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="assets/js/dashboard.js"></script>

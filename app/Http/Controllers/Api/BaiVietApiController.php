@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\BaiViet;
 use App\Http\Resources\BaiVietResources;
-use App\Models\BaiViet as ModelsBaiViet;
+use App\Models\BaiViet ;
+use App\Models\HinhBaiViet;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class BaiVietApiController extends Controller
 {
@@ -17,8 +19,8 @@ class BaiVietApiController extends Controller
      */
     public function index()
     {
-        $products = ModelsBaiViet::all();
-    
+        $products = BaiViet::all();
+        
         return $products;
     }
 
@@ -30,7 +32,58 @@ class BaiVietApiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'noidung'=>'required',
+            
+        ],[
+            'noidung'=>'Vui lòng nhập nôi dung',
+        ]);
+    $baiViet= new BaiViet;
+      $baiViet->fill(
+          [
+            'noi_dung'=>$request->input('noidung'),
+            'like'=>0,
+            'dislike'=>0,
+            'view'=>0,
+            'trangthai'=>$request->input('trangthai'),
+            'id_diadiem'=>$request->input('diadiem'),
+            'id_nguoidung'=>$request->input('nguoidung'),
+          
+          ]
+          );
+        $baiViet->save();
+        $hinh = new HinhBaiViet;
+        $hinh->fill([
+         'nguon'=>'',
+         'id_hinh_anh'=>$baiViet->id,
+         "trangthai"=>1,
+        ]);
+        $hinh->save();
+        if($request->hasFile('hinhanh')){
+            //Hàm kiểm tra dữ liệu
+            $this->validate($request, 
+                [
+                    //Kiểm tra đúng file đuôi .jpg,.jpeg,.png.gif và dung lượng không quá 2M
+                    'hinh' => 'mimes:jpg,jpeg,png,gif|max:2048',
+                ],			
+                [
+                    //Tùy chỉnh hiển thị thông báo không thõa điều kiện
+                    'hinh.mimes' => 'Chỉ chấp nhận hình thẻ với đuôi .jpg .jpeg .png .gif',
+                    'hinh.max' => 'Hình thẻ giới hạn dung lượng không quá 2M',
+                ]
+            );
+        
+
+            $get_image=$request->file('hinhanh');
+            $path='public/upload/baiviet';
+            $get_name_images=$get_image->getClientOriginalName();
+            $name_images= current(explode('.',$get_name_images));
+            $new_images= $name_images.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+            $get_image->move($path,$new_images);
+        $hinh->nguon=$new_images;
+        $hinh->save();
+    }
+        return $baiViet;
     }
 
     /**
@@ -39,9 +92,17 @@ class BaiVietApiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(BaiViet $baiViet)
     {
-        //
+        $baiViet->HinhBaiViet = HinhBaiViet::where('id_hinh_anh','=',$baiViet->id)->get();
+        $baiViet->User= User::where('id','=',$baiViet->id_nguoidung)->get();
+        return [
+            'baiviet'=>[
+                'hinhanh'=>$baiViet->HinhBaiViet,
+                'diadiem'=>$baiViet->DiaDiem,
+                'nguoidang'=>$baiViet->User,
+            ]
+            ];
     }
 
     /**
@@ -51,9 +112,53 @@ class BaiVietApiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, BaiViet $baiViet,HinhBaiViet $hinhBaiViet)
     {
-        //
+        $baiViet->fill( 
+            [
+              'noi_dung'=>$request->input('noidung'),
+              'like'=>0,
+              'dislike'=>0,
+              'view'=>0,
+              'trangthai'=>$request->input('trangthai'),
+              'id_diadiem'=>$request->input('diadiem'),
+              'id_nguoidung'=>$request->input('nguoidung'),
+            
+            ]
+            );
+          $baiViet->save();
+      
+          $hinhBaiViet->fill([
+           'nguon'=>'',
+           'id_hinh_anh'=>$baiViet->id,
+           "trangthai"=>1,
+          ]);
+          $hinhBaiViet->save();
+          if($request->hasFile('hinhanh')){
+              //Hàm kiểm tra dữ liệu
+              $this->validate($request, 
+                  [
+                      //Kiểm tra đúng file đuôi .jpg,.jpeg,.png.gif và dung lượng không quá 2M
+                      'hinh' => 'mimes:jpg,jpeg,png,gif|max:2048',
+                  ],			
+                  [
+                      //Tùy chỉnh hiển thị thông báo không thõa điều kiện
+                      'hinh.mimes' => 'Chỉ chấp nhận hình thẻ với đuôi .jpg .jpeg .png .gif',
+                      'hinh.max' => 'Hình thẻ giới hạn dung lượng không quá 2M',
+                  ]
+              );
+          
+  
+              $get_image=$request->file('hinhanh');
+              $path='public/upload/baiviet';
+              $get_name_images=$get_image->getClientOriginalName();
+              $name_images= current(explode('.',$get_name_images));
+              $new_images= $name_images.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+              $get_image->move($path,$new_images);
+          $hinhBaiViet->nguon=$new_images;
+          $hinhBaiViet->save();
+      }
+          return $baiViet;
     }
 
     /**
@@ -62,8 +167,11 @@ class BaiVietApiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(BaiViet $baiViet)
     {
-        //
+        HinhBaiViet::where('id_hinh_anh',$baiViet->id)->delete();
+        
+        $baiViet->delete();
+        
     }
 }

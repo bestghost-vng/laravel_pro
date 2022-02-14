@@ -5,12 +5,12 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Typography </h3>
+              <h3 class="page-title"> Khách Sạn </h3>
                <a href="{{route('khachsan.create')}}" class="btn btn-primary">Thêm</a>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">UI Elements</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Typography</li>
+                  <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Khách Sạn</li>
                 </ol>
               </nav>
             </div>
@@ -20,7 +20,7 @@
                
                 <th scope="col"> Hình Ảnh</th>
                 <th scope="col">Tên Khách Sạn</th>
-                <th scope="col">Dịa Chỉ</th>
+                <th scope="col">Địa Chỉ</th>
                 <th scope="col"></th>
               </tr>
             </thead>
@@ -35,11 +35,6 @@
                     <p class="card-text"></p>           
                     
                     <a href="{{route('khachsan.edit',['khachSan'=>$lt])}}" class="btn btn-primary">Sửa</a>
-                   {{--  <form action="{{route('khachsan.destroy',['khachSan'=>$lt])}}" method="post">
-                   @csrf 
-                   @method('DELETE')
-                   <button class="btn btn-secondary btn-sm" type="button">Xoá</button>
-                   </form>  --}}
                   </div>
                   
                 </div></th>

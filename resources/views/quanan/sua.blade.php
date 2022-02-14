@@ -6,11 +6,11 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Typography </h3>
+              <h3 class="page-title"> Quán Ăn </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">UI Elements</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Typography</li>
+                  <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Quán Ăn</li>
                 </ol>
               </nav>
             </div>
@@ -40,11 +40,15 @@
                         <label for="exampleInputEmail3">Tên Dịch Vụ </label>
                         <input type="text" class="form-control" name="tendichvu" value="{{$quanAn->tenquanan}}">
                       </div>
+
                       <div class="form-group">
                       <label for="exampleInputEmail3">Địa Chỉ</label>
                         <input type="text" class="form-control" name="diachi" value="{{$quanAn->diachi}}">
                      </div>
-
+                          <div class="form-group">
+                      <label for="exampleInputEmail3">Hìnhảnh</label>
+                        <input type="file" class="form-control" name="hinh" value="{{$quanAn->hinhanh}}">
+                     </div>
                       <button type="submit" class="btn btn-primary mr-2">Submit</button>
                       <button class="btn btn-dark">Cancel</button>
                     </form>

@@ -5,12 +5,12 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Typography </h3>
+              <h3 class="page-title"> Dịch Vụ </h3>
                <a href="{{route('dichvu.create')}}" class="btn btn-primary">thêm</a>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">UI Elements</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Typography</li>
+                  <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Địa Điểm</li>
                 </ol>
               </nav>
             </div>
@@ -35,11 +35,6 @@
                     <p class="card-text"></p>           
                    
                     <a href="{{route('dichvu.edit',['dichVu'=>$lt])}}" class="btn btn-primary">Sửa</a>
-                   <form action="{{route('dichvu.delete',['dichVu'=>$lt])}}" method="post">
-                   @csrf 
-                   @method('DELETE')
-                   <button class="btn btn-secondary btn-sm" type="button">Xoá</button>
-                   </form>
                   </div>
                   
                 </div></th>

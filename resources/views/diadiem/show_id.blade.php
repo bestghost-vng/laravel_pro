@@ -5,30 +5,75 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Bai Viet </h3>
+              <h3 class="page-title"> Địa Điểm </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Bai Viet</li>
+                  <li class="breadcrumb-item active" aria-current="page">Địa Điểm</li>
                 </ol>
               </nav>
             </div>
-              <div class="card" style="width: 18rem;">
-                <img src="" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Thông tin Chi Tiết Địa Điểm</h5>
-                    <p class="card-text">{{$diaDiem->tendiadiem}}</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item bg-info">{{ $diaDiem->KhachSan->tenkhachsan}}</li>
-                    <li class="list-group-item bg-info">{{ $diaDiem->QuanAn->tenquanan}}</li>
-                    <li class="list-group-item bg-info">{{ $diaDiem->DichVu->tendichvu}}</li>
-                </ul>
-                <div class="card-body">
-                    <a href="{{route('diadiem.index')}}" class="card-link">Back</a>
-                </div>
+             <div class="card ">
+              <h5 class="card-title">{{$diaDiem->tendiadiem}}</h5>
+              <h6> Khách Sạn</h6>
+                <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Tên Khách Sạn</th>
+                    <th scope="col">Địa Chỉ</th>
+                  
+                  </tr>
+                </thead>
+                <tbody> @foreach( $diaDiem->KhachSan as $ks)
+                  <tr>
+                 
+                    <td>{{ $ks->tenkhachsan}}</td>
+                    <td>{{ $ks->diachi}}</td>
+                 
+                  </tr> @endforeach 
+                </tbody>
+              </table>
+             <h6>Dịch Vụ</h6>
+                <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Tên Dịch Vụ</th>
+                    <th scope="col">Mô Tả</th>
+                  
+                  </tr>
+                </thead>
+                <tbody> @foreach( $diaDiem->DichVu as $ks)
+                  <tr>
+                 
+                    <td>{{ $ks->tendichvu}}</td>
+                    <td>{{ $ks->mota}}</td>
+                 
+                  </tr> @endforeach 
+                </tbody>
+              </table>
+              
+            
+              <h6>Quán Ăn</h6>
+                <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Tên Quán Ăn</th>
+                    <th scope="col">Địa Chỉ</th>
+                  
+                  </tr>
+                </thead>
+                <tbody> @foreach( $diaDiem->QuanAn as $ks )
+                  <tr>
+                 
+                    <td>{{ $ks->tenquanan}}</td>
+                    <td>{{ $ks->diachi}}</td>
+                 
+                  </tr> @endforeach 
+                </tbody>
+              </table>
+             
             </div>
-           
+            <a href="{{route('diadiem.index')}}" class="btn btn-primary">Back</a>
           </div>  
         </div>
         <!-- main-panel ends -->

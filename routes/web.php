@@ -24,17 +24,17 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/login',function(){
+Route::get('/',function(){
 return view('dangnhap.login');
 });  
-Route::get('/dasboard',[UserController::class,'dasboard'])->name('dasboard');
-Route::post('dangnhap',[UserController::class,'getlogin'])->name('getlogin');
+Route::get('/dasboard',[AdminController::class,'dasboard'])->name('dasboard');
+Route::post('dangnhap',[AdminController::class,'getlogin'])->name('getlogin');
 //baiviet
 Route::get('/baiviet',[BaiVietController::class,'index'])->name('baiviet.show');
 Route::get('/baiviet/{baiViet}',[BaiVietController::class,'show'])->name('baiviet.detail');
-Route::post('/baiviet/{baiViet}/delete',[BaiVietController::class,'destroy'])->name('baiviet.destroy');
-Route::get('/baiviet/{baiViet}/edit',[BaiVietController::class,'edit'])->name('baiviet.edit');
-Route::put('/baiviet/{baiViet}/edit',[BaiVietController::class,'update'])->name('baiviet.update');
+Route::delete('/baiviet/{baiViet}/delete',[BaiVietController::class,'destroy'])->name('baiviet.destroy');
+// Route::get('/baiviet/{baiViet}/edit',[BaiVietController::class,'edit'])->name('baiviet.edit');
+// Route::put('/baiviet/{baiViet}/edit',[BaiVietController::class,'update'])->name('baiviet.update');
 
 
 // dichvu
@@ -43,7 +43,7 @@ Route::get('/dichvu/create',[DichVuController::class,'create'])->name('dichvu.cr
 Route::post('/dichvu/create',[DichVuController::class,'store'])->name('dichvu.store');
 Route::get('/dichvu/edit/{dichVu}',[DichVuController::class,'edit'])->name('dichvu.edit');
 Route::put('/dichvu/edit/{dichVu}',[DichVuController::class,'update'])->name('dichvu.update');
-Route::get('/dichvu/delete/{dichVu}',[BaiVietController::class,'destroy'])->name('dichvu.delete');
+Route::get('/dichvu/delete/{dichVu}',[DichVuController::class,'destroy'])->name('dichvu.destroy');
 
 //quanan
 Route::get('/quanan',[QuanAnController::class,'index'])->name('quanan.show');
@@ -59,7 +59,7 @@ Route::get('/dacsan/create',[DacSanController::class,'create'])->name('dacsan.cr
 Route::post('/dacsan/create',[DacSanController::class,'store'])->name('dacsan.store');
 Route::get('/dacsan/edit/{dacSan}',[DacSanController::class,'edit'])->name('dacsan.edit');
 Route::put('/dacsan/edit/{dacSan}',[DacSanController::class,'update'])->name('dacsan.update');
-Route::get('/dacsan/delete/{dacsan}',[DacSanController::class,'destroy'])->name('dacsan.destroy');
+Route::get('/dacsan/delete/{dacSan}',[DacSanController::class,'destroy'])->name('dacsan.destroy');
 
 //diadiem
 Route::get('/diadiem/Show/{diaDiem}',[DiaDiemController::class,'show'])->name('diadiem.show');
@@ -76,7 +76,7 @@ Route::get('/khachsan/create',[KhachSanController::class,'create'])->name('khach
 Route::post('/khachsan/create',[KhachSanController::class,'store'])->name('khachsan.store');
 Route::get('/khachsan/edit/{khachSan}',[KhachSanController::class,'edit'])->name('khachsan.edit');
 Route::put('/khachsan/edit/{khachSan}',[KhachSanController::class,'update'])->name('khachsan.update');
-Route::get('/khachsan/delete/{KhachSan}',[KhachSanController::class,'destroy'])->name('khachsan.destroy');
+Route::get('/khachsan/delete/{khachSan}',[KhachSanController::class,'destroy'])->name('khachsan.destroy');
  
 //thanhpho
 Route::get('/thanhpho',[ThanhPhoController::class,'index'])->name('thanhpho.show');

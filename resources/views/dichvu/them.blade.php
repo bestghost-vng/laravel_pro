@@ -6,11 +6,11 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Typography </h3>
+              <h3 class="page-title"> Dịch Vụ </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="#">UI Elements</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Typography</li>
+                  <li class="breadcrumb-item active" aria-current="page">Dịch Vụ</li>
                 </ol>
               </nav>
             </div>
@@ -51,7 +51,10 @@
                       <label for="exampleInputEmail3">Trạng thái</label>
                         <input type="text" class="form-control" name="trangthai" placeholder="Nhập">
                      </div>
-
+                      <div class="form-group">
+                      <label for="exampleInputEmail3">STT diadiem</label>
+                        <input type="text" class="form-control" name="iddiadiem" placeholder="Nhập">
+                     </div>
                       <button type="submit" class="btn btn-primary mr-2">Submit</button>
                       <button class="btn btn-dark">Cancel</button>
                     </form>

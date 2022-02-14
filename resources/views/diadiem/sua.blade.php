@@ -6,18 +6,18 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Typography </h3>
+              <h3 class="page-title"> Địa Điểm</h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">UI Elements</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Typography</li>
+                  <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Địa Điểm</li>
                 </ol>
               </nav>
             </div>
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Cap Nhap Dịch Vụ Mới </h4>
+                    <h4 class="card-title">Cập Nhập Địa Điểm </h4>
                     
                     <form class="forms-sample" action="{{route('diadiem.update',['diaDiem'=>$diaDiem])}}" method="post" enctype="multipart/form-data">
                              @csrf
@@ -52,6 +52,10 @@
                         <label for="exampleInputEmail3">Vĩ Độ </label>
                         <input type="text" class="form-control" name="vido" value="{{$diaDiem->vido}}">
                       </div>
+                       <div class="form-group">
+                      <label for="exampleInputEmail3">Hìnhảnh</label>
+                        <input type="file" class="form-control" name="hinh" value="{{$diaDiem->hinhanh}}">
+                     </div>
                        <div class="form-group">
                         <label for="exampleInputEmail3">STT dacsan </label>
                         <input type="text" class="form-control" name="iddacsan" value="{{$diaDiem->quanan_id}}">

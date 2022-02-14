@@ -6,18 +6,18 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Typography </h3>
+              <h3 class="page-title"> Quán Ăn</h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">UI Elements</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Typography</li>
+                  <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Quán Ăn</li>
                 </ol>
               </nav>
             </div>
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Thêm Quan An Mới </h4>
+                    <h4 class="card-title">Thêm Quán Ăn </h4>
                     
                     <form class="forms-sample" action="{{route('quanan.store')}}" method="post" enctype="multipart/form-data">
                              @csrf
@@ -50,7 +50,8 @@
                         <label for="formFile" class="form-label">Hinh Anh</label>
                          <input class="form-control" type="file" id="formFile" name="hinh">
                      </div>
-                
+                       <div class="form-group">
+                      
                       <button type="submit" class="btn btn-primary mr-2">Submit</button>
                       <button class="btn btn-dark">Cancel</button>
                     </form>

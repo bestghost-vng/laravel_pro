@@ -5,12 +5,12 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Typography </h3>
+              <h3 class="page-title"> Quán Ăn </h3>
                <a href="{{route('quanan.create')}}" class="btn btn-primary">Them</a>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">UI Elements</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Typography</li>
+                  <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Quán Ăn</li>
                 </ol>
               </nav>
             </div>
@@ -19,8 +19,8 @@
               <tr>
                
                 <th scope="col"> STT</th>
-                <th scope="col">Tên Quan An</th>
-                <th scope="col">Dia Chi</th>
+                <th scope="col">Tên Quán Ăn</th>
+                <th scope="col">Địa Chỉ</th>
                 <th scope="col"></th>
               </tr>
             </thead>
@@ -35,11 +35,7 @@
                     <p class="card-text"></p>           
                     
                     <a href="{{route('quanan.edit',['quanAn'=>$lt])}}" class="btn btn-primary">Sửa</a>
-                   <form class="forms-sample" action="{{route('quanan.destroy',['quanAn'=>$lt])}}" method="post" enctype="multipart/form-data">
-                   @csrf 
-                   @method('DELETE')
-                   <button class="btn btn-secondary btn-sm" type="button">Xoá</button>
-                   </form>
+                  
                   </div>
                   
                 </div></th>

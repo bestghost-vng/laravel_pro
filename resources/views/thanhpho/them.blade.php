@@ -6,18 +6,18 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Typography </h3>
+              <h3 class="page-title"> Thành Phố </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">UI Elements</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Typography</li>
+                  <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Thành Phố</li>
                 </ol>
               </nav>
             </div>
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Thêm Quan An Mới </h4>
+                    <h4 class="card-title">Thêm Thành Phố  </h4>
                     
                     <form class="forms-sample" action="{{route('thanhpho.store')}}" method="post" enctype="multipart/form-data">
                              @csrf
@@ -50,6 +50,10 @@
                       <div class="form-group">
                         <label for="exampleInputEmail3">STT vung</label>
                         <input type="text" class="form-control" name="idvung" placeholder="Nhập">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail3">STT diadiem</label>
+                        <input type="text" class="form-control" name="iddiadiem" placeholder="Nhập">
                       </div>
                       <div class="form-group">
                         <label for="exampleInputEmail3">Trạng Thái</label>
