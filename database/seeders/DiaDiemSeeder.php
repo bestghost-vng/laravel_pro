@@ -21,6 +21,7 @@ class DiaDiemSeeder extends Seeder
                 'tendiadiem'=>'khanhhoa'.$i,
                 'kinhdo'=>$i,
                 'vido'=>$i,
+                'hinhanh'=>$i,
                 'mieuta'=>'hinh anh'.$i,
                 'quanan_id'=>$i,
                 'khachsan_id'=>$i,

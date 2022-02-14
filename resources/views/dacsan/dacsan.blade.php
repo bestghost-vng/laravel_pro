@@ -5,12 +5,12 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Typography </h3>
+              <h3 class="page-title"> Đặc Sản </h3>
                <a href="{{route('dacsan.create')}}" class="btn btn-primary">Thêm</a>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">UI Elements</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Typography</li>
+                  <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Đặc Sản</li>
                 </ol>
               </nav>
             </div>
@@ -37,11 +37,8 @@
                     <p class="card-text"></p>           
                     
                     <a href="{{route('dacsan.edit',['dacSan'=>$lt])}}" class="btn btn-primary">Sửa</a>
-                   {{--  <form action="{{route('dacsan.destroy',['dacSan'=>$lt])}}" method="post">
-                   @csrf 
-                   @method('DELETE')
-                   <button class="btn btn-secondary btn-sm" type="button">Xoá</button>
-                   </form>  --}}
+                    <a href="{{route('dacsan.destroy',['dacSan'=>$lt])}}" class="btn btn-primary">Xoá</a>
+                  
                   </div>
                   
                 </div></th>

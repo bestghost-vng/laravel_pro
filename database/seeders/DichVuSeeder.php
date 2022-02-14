@@ -20,6 +20,7 @@ class DichVuSeeder extends Seeder
               [
                 'tendichvu'=>'chay'.$i,
                 'mota'=>'ngon'.$i,
+                'id_diadiem'=>$i,
                 'hinhanh'=>'hinh anh'.$i,
                 'trangthai'=>$i
               ]

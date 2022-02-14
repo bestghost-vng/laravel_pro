@@ -14,11 +14,12 @@ class VungMienSeeder extends Seeder
      */
     public function run()
     {
-        for($i=1;$i<=2;$i++)
+       $arr=['Bắc Bộ','Duyên Hải Miền Trung','Nam Bộ'];
+        foreach($arr as $a)
         { $dacSan= new VungMien;
          $dacSan->fill(
              [
-               'tenvung'=>'Bac'.$i,
+               'tenvung'=>$a,
              ]
              );
              $dacSan->save();}

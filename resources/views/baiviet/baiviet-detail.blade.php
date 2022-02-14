@@ -4,48 +4,43 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Bai Viet </h3>
+              <h3 class="page-title">Bài Viết</h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Bai Viet</li>
+                  <li class="breadcrumb-item active" aria-current="page">Bài Viết</li>
                 </ol>
               </nav>
             </div>
+          <div class="card ">
+          <div id="carouselExampleControls" class="carousel slide " data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active"> 
+                <img src="..." class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="..." class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="..." class="d-block w-100" alt="...">
+              </div>
+            </div>
+          </div>
+            <div class="card-body">
+              <h5 class="card-title">Nội Dung: {{$baiViet->noi_dung}}</h5>
+              <p class="card-text">Địa Điểm: {{$baiViet->DiaDiem->tendiadiem}}</p>
+              <p class="card-text">Người Đăng:  {{$baiViet->User->name}}</p>
+              <p class="card-text"><small class="text-muted">{{$baiViet->created_at}}</small></p>
+            </div>
+          </div>
             <div class="card">
-              <div class="card-body">
-                <div class=""> Nội Dung: {{$baiViet->noi_dung}}</div>
-          
-           
-                <div class="accordion-body "> Tên Quán Ăn {{$baiViet->QuanAn->tenquanan}}</div>
-
-   
-           
-             
-                <div class="accordion-body"> Địa Điểm: {{$baiViet->DiaDiem->tendiadiem}}</div>
-   
-            
-              
-             
-                <div class="accordion-body"> Dịch Vụ Kèm: {{$baiViet->DichVu->tendichvu}}</div>
-              
-               
-  
-              
-                <div class="accordion-body">Đặc Sản: {{$baiViet->DacSan->tendacsan}}</div>
-              
-               
-             
-                <div class="accordion-body">Người Đăng:  {{$baiViet->User->name}}</div>
-               
                 <div class="d-grid gap-2 d-md-block">
-                  <a href="{{route('baiviet.edit',['baiViet'=>$baiViet])}}" class="btn btn-primary">Sua</a>
                   <form action="{{route('baiviet.destroy',['baiViet'=>$baiViet])}}" method="POST">
                    @csrf 
                    @method('DELETE')
-                   <button class="btn btn-secondary btn-sm" type="button">Xoá</button>
+                   <button class="btn btn-primary " type="button">Xoá</button>
                   </form>
-                 
+                 <a href="{{route('baiviet.show')}}" class="btn btn-primary btn-sm">Back</a>
                 </div>
               </div>
             </div>

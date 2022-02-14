@@ -23,11 +23,9 @@ class BaiVietSeeder extends Seeder
                 'dislike'=>$i,
                 'view'=>$i,
                 'trangthai'=>$i,
-                'id_quanan'=>$i,
-                'id_dacsan'=>$i,
+              
                 'id_diadiem'=>$i,
-                'id_dichvu'=>$i,
-                'id_khachsan'=>$i,
+            
                 'id_nguoidung'=>$i,
               ]
               );
