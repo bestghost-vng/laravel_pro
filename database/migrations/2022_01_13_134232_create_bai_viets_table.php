@@ -20,11 +20,7 @@ class CreateBaiVietsTable extends Migration
             $table->integer('dislike');
             $table->integer('view');
             $table->integer('trangthai');
-            $table->foreignId('id_quanan');
-            $table->foreignId('id_dacsan');
             $table->foreignId('id_diadiem');
-            $table->foreignId('id_dichvu');
-            $table->foreignId('id_khachsan');
             $table->foreignId('id_nguoidung');
             $table->softDeletes();
             $table->timestamps();

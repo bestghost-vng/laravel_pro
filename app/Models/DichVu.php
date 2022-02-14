@@ -9,7 +9,7 @@ class DichVu extends Model
 {
     use HasFactory;
     protected $guard =[];
-    protected $fillable = ['tendichvu','mota','trangthai','hinhanh'];
+    protected $fillable = ['tendichvu','mota','trangthai','hinhanh','id_diadiem'];
     public function BaiViet(){
         return $this->hasMany(BaiViet::class);
     }

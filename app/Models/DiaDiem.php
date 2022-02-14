@@ -10,9 +10,9 @@ class DiaDiem extends Model
     use HasFactory;
     protected $guard =[];
     protected $primaryKey ='id'; 
-    protected $fillable = ['tendiadiem','mieuta','trangthai','kinhdo','vido','quanan_id','khachsan_id','dichvu_id'];
+    protected $fillable = ['tendiadiem','mieuta','trangthai','kinhdo','vido','hinhanh','quanan_id','khachsan_id','dichvu_id'];
     public function BaiViet(){
-        return $this->hasMany(BaiViet::class);
+        return $this->belongsTo(BaiViet::class);
     }
     public function QuanAn(){
         return $this->belongsTo(QuanAn::class,'quanan_id','id');
@@ -22,6 +22,9 @@ class DiaDiem extends Model
     }
     public function KhachSan(){
         return $this->belongsTo(KhachSan::class,'khachsan_id','id');
+    }
+    public function ThanhPho(){
+        return $this->belongsTo(ThanhPho::class);
     }
 }
  

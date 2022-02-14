@@ -18,6 +18,7 @@ class CreateDichVusTable extends Migration
             $table->string('tendichvu');
             $table->string('mota');
             $table->string('hinhanh');
+            $table->integer('id_diadiem');
             $table->integer('trangthai');
             $table->softDeletes();
             $table->timestamps();

@@ -45,4 +45,13 @@ class User extends Authenticatable
     public function BaiViet(){
         return $this->hasMany(BaiViet::class);
     }
+    public function Like(){
+        return $this->hasMany(Like::class);
+    }
+    public function DisLike(){
+        return $this->hasMany(Disklike::class);
+    }
+    public function View(){
+        return $this->hasMany(View::class);
+    }
 }

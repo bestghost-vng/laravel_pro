@@ -16,6 +16,7 @@ class CreateDiaDiemsTable extends Migration
         Schema::create('dia_diems', function (Blueprint $table) {
             $table->id();
             $table->string('tendiadiem');
+            $table->string('hinhanh');
             $table->double('kinhdo');
             $table->double('vido');
             $table->string('mieuta');   
