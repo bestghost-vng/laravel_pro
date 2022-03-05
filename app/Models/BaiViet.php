@@ -10,7 +10,7 @@ class BaiViet extends Model
     use HasFactory;
     protected $fillable = [
         'id',
-        'noi_dung',
+        'noidung',
         'trangthai',
         'like',
         'dislike',
@@ -40,5 +40,6 @@ class BaiViet extends Model
     public function View(){
         return $this->belongsTo(View::class);
     }
+    
 }
    

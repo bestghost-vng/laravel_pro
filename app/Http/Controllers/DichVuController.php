@@ -66,16 +66,28 @@ class DichVuController extends Controller
 				'hinh.max' => 'Hình thẻ giới hạn dung lượng không quá 2M',
 			]
 		);
-		
         $get_image=$request->file('hinh');
         $path='public/upload/dichvu';
         $get_name_images=$get_image->getClientOriginalName();
         $name_images= current(explode('.',$get_name_images));
         $new_images= $name_images.rand(0,99).'.'.$get_image->getClientOriginalExtension();
         $get_image->move($path,$new_images);
-    $dichVu->hinhanh=$new_images;
-    $dichVu->save();}
-    return Redirect::route('dichvu.show');
+    $dichVu->hinhanh=$new_images;$dichVu->save();
+    if($dichVu->hinhanh == '')
+    {
+        $dv = DichVu::Where('id',$dichVu->id)->max();
+        $dv->delete();
+        return Redirect::route('dichvu.show'); 
+    }
+    else 
+    {
+        return Redirect::route('dichvu.show');
+    }
+    
+
+}
+    
+    
     }
 
     /**

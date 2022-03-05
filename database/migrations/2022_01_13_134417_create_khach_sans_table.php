@@ -17,6 +17,9 @@ class CreateKhachSansTable extends Migration
             $table->id();
             $table->string('tenkhachsan');
             $table->string('hinhanh');
+            $table->text('mota');
+            $table->string('kinhdo');
+            $table->string('vido');
             $table->string('diachi');
             $table->integer('danhgia');
             $table->integer('id_diadiem');

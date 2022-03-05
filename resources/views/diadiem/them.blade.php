@@ -36,12 +36,12 @@
                                 </div>
                                 @endif
                       <div class="form-group">
-                        <label for="exampleInputEmail3">Tên Đia Điểm </label>
+                        <label for="exampleInputEmail3">Tên Thành Phố </label>
                         <input type="text" class="form-control" name="tendiadiem" placeholder="Nhập">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputEmail3">Miêu Tả </label>
-                        <input type="text" class="form-control" name="mieuta" placeholder="Nhập">
+                        <label for="exampleInputEmail3">Mô Tả</label>
+                        <input type="text" class="form-control" name="mota" placeholder="Nhập">
                       </div>
                        <div class="form-group">
                         <label for="exampleInputEmail3">Kinh Độ </label>
@@ -52,15 +52,11 @@
                         <input type="text" class="form-control" name="vido" placeholder="Nhập">
                       </div>
                        <div class="form-group">
-                        <label for="exampleInputEmail3">STT dacsan </label>
-                        <input type="text" class="form-control" name="iddacsan" placeholder="Nhập">
-                      </div>
+                        <label for="formFile" class="form-label">Hinh Anh</label>
+                         <input class="form-control" type="file" id="formFile" name="hinh">
+                     </div>
                        <div class="form-group">
-                        <label for="exampleInputEmail3">STT khachsan </label>
-                        <input type="text" class="form-control" name="idkhachsan" placeholder="Nhập">
-                      </div>
-                       <div class="form-group">
-                        <label for="exampleInputEmail3">STT dichvu </label>
+                        <label for="exampleInputEmail3">STT Vùng Miền </label>
                         <input type="text" class="form-control" name="iddichvu" placeholder="Nhập">
                       </div>
                        <div class="form-group">

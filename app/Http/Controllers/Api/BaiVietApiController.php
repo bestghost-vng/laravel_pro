@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Api\DiaDiemController as ApiDiaDiemController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\DiaDiemController;
 use App\Http\Resources\BaiVietResources;
 use App\Models\BaiViet ;
+use App\Models\DiaDiem;
 use App\Models\HinhBaiViet;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,7 +23,11 @@ class BaiVietApiController extends Controller
     public function index()
     {
         $products = BaiViet::all();
-        
+        foreach ( $products as $bv)
+        {
+            $bv->id_nguoidung = User::where('id','=',$bv->id_nguoidung)->get();
+            $bv->id_diadiem = DiaDiem::where('id','=',$bv->id_diadiem)->get();
+        };
         return $products;
     }
 
@@ -41,11 +48,11 @@ class BaiVietApiController extends Controller
     $baiViet= new BaiViet;
       $baiViet->fill(
           [
-            'noi_dung'=>$request->input('noidung'),
+            'noidung'=>$request->input('noidung'),
             'like'=>0,
             'dislike'=>0,
             'view'=>0,
-            'trangthai'=>$request->input('trangthai'),
+            'trangthai'=>1,
             'id_diadiem'=>$request->input('diadiem'),
             'id_nguoidung'=>$request->input('nguoidung'),
           
@@ -93,7 +100,7 @@ class BaiVietApiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(BaiViet $baiViet)
-    {
+    {  
         $baiViet->HinhBaiViet = HinhBaiViet::where('id_hinh_anh','=',$baiViet->id)->get();
         $baiViet->User= User::where('id','=',$baiViet->id_nguoidung)->get();
         return [
@@ -116,7 +123,7 @@ class BaiVietApiController extends Controller
     {
         $baiViet->fill( 
             [
-              'noi_dung'=>$request->input('noidung'),
+              'noidung'=>$request->input('noidung'),
               'like'=>0,
               'dislike'=>0,
               'view'=>0,

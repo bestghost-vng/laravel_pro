@@ -18,12 +18,16 @@ class ThanhPhoSeeder extends Seeder
          { $dacSan= new ThanhPho;
           $dacSan->fill(
               [
-                'tenthanhpho'=>'banh'.$i,
-                'mota'=>'dep'.$i,
-                'id_vungmien'=>$i,
-                'hinhanh'=>'hinh anh'.$i,
+                'tendiadiem'=>'khanhhoa'.$i,
+                'kinhdo'=>$i,
+                'vido'=>$i,
+                'hinhanh'=>$i,
+                'mota'=>'hinh anh'.$i,
                 'id_diadiem'=>$i,
-                'trangthai'=>$i
+                'quanan_id'=>$i,
+                'khachsan_id'=>$i,
+                'dichvu_id'=>$i,
+                'trangthai'=>$i,
               ]
               );
               $dacSan->save();}

@@ -9,7 +9,7 @@ class KhachSan extends Model
 {
     use HasFactory;
     protected $guard =[];
-    protected $fillable = ['tenkhachsan','diachi','trangthai','hinhanh','danhgia','id_diadiem'];
+    protected $fillable = ['tenkhachsan','diachi','mota', 'kinhdo', 'vido','trangthai','hinhanh','danhgia','id_diadiem'];
     public function BaiViet(){
         return $this->hasMany(BaiViet::class);
     }

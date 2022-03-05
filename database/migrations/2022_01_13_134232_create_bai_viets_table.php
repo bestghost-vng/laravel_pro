@@ -15,7 +15,7 @@ class CreateBaiVietsTable extends Migration
     {
         Schema::create('bai_viets', function (Blueprint $table) {
             $table->id();
-            $table->text('noi_dung');
+            $table->text('noidung');
             $table->integer('like');
             $table->integer('dislike');
             $table->integer('view');

@@ -15,9 +15,13 @@ class CreateThanhPhosTable extends Migration
     {
         Schema::create('thanh_phos', function (Blueprint $table) {
             $table->id();
-            $table->string('tenthanhpho');
-            $table->foreignId('id_vungmien')->references('id')->on('vung_miens');
+            $table->string('tendiadiem');
+            $table->string('kinhdo');
+            $table->string('vido');
             $table->foreignId('id_diadiem')->references('id')->on('dia_diems');
+            $table->foreignId('quanan_id')->references('id')->on('quan_ans');
+            $table->foreignId('dichvu_id')->references('id')->on('dich_vus');
+            $table->foreignId('khachsan_id')->references('id')->on('khach_sans');
             $table->string('hinhanh');
             $table->text('mota');
             $table->integer('trangthai');  

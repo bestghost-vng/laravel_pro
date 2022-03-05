@@ -20,7 +20,9 @@ class KhachSanSeeder extends Seeder
              [
                'tenkhachsan'=>'banh'.$i,
                'hinhanh'=>'hinh anh'.$i,
-               
+               'mota'=>'chan'.$i,
+               'kinhdo'=>$i,
+               'vido'=>$i,
                'diachi'=>$i,'id_diadiem'=>$i,
                'trangthai'=>$i,
                'danhgia'=>$i,

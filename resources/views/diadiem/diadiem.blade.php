@@ -29,7 +29,7 @@
              @foreach($diaDiem as $lt)
               <tr>
                 <th scope="col"> <img src="public/upload/diadiem/{{$lt->hinhanh}}" class="card-img-top" style="width:100px;max-height:100px;object-fit:contain"></th>
-                <th scope="col">{{$lt->tendiadiem}}</th>
+                <th scope="col">{{$lt->tenthanhpho}}</th>
                 <th scope="col">{{$lt->mieuta}}</th>
                 <th scope="col"><div class="card-body">
                     <h5 class="card-title"></h5>

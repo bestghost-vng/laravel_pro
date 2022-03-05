@@ -11,12 +11,12 @@ class DacSan extends Model
     protected $guard =[];
     protected $fillable = ['tendacsan','hinhanh','mota','gia','quanan_id','trangthai'];
     public function QuanAn(){
-        return $this->hasMany(QuanAn::class,'quanan_id','id');
+        return $this->belongsTo(QuanAn::class,'quanan_id','id');
    }
-    public function BaiViet(){
-        return $this->hasMany(BaiViet::class);
-    }
-    public function DiaDiem(){
-        return $this->belongsTo(DiaDiem::class);
-    }
+    // public function BaiViet(){
+    //     return $this->hasMany(BaiViet::class);
+    // }
+    // public function DiaDiem(){
+    //     return $this->belongsTo(DiaDiem::class);
+    // }
 }

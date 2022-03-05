@@ -43,6 +43,14 @@
                         <label for="exampleInputEmail3">Địa Chỉ </label>
                         <input type="text" class="form-control" name="diachi" placeholder="Nhập">
                       </div>
+                       <div class="form-group">
+                        <label for="exampleInputEmail3">Kinh Độ  </label>
+                        <input type="text" class="form-control" name="kinhdo" placeholder="Nhập">
+                      </div>
+                       <div class="form-group">
+                        <label for="exampleInputEmail3">Vĩ Độ </label>
+                        <input type="text" class="form-control" name="vido" placeholder="Nhập">
+                      </div>
                       <div class="form-group">
                         <label for="formFile" class="form-label">Hình Ảnh</label>
                          <input class="form-control" type="file" id="formFile" name="hinh">

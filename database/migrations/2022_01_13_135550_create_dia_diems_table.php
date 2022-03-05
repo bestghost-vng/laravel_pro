@@ -15,14 +15,12 @@ class CreateDiaDiemsTable extends Migration
     {
         Schema::create('dia_diems', function (Blueprint $table) {
             $table->id();
-            $table->string('tendiadiem');
+            $table->string('tenthanhpho');
             $table->string('hinhanh');
             $table->double('kinhdo');
             $table->double('vido');
-            $table->string('mieuta');   
-            $table->foreignId('quanan_id')->references('id')->on('quan_ans');
-            $table->foreignId('dichvu_id')->references('id')->on('dich_vus');
-            $table->foreignId('khachsan_id')->references('id')->on('khach_sans');
+            $table->text('mota');   
+            $table->foreignId('id_vungmien')->references('id')->on('vung_miens');
             $table->integer('trangthai');
             $table->softDeletes();
             $table->timestamps();

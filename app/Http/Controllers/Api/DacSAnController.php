@@ -38,7 +38,9 @@ class DacSAnController extends Controller
      */
     public function show($id)
     {
-        //
+        return[
+            'id'=>$dacsan->id,
+        ];
     }
 
     /**

@@ -43,16 +43,17 @@ class DiaDiemController extends Controller
      */
     public function show(DiaDiem $diaDiem)
     {
-        $diaDiem->QuanAn=QuanAn::where('id_diadiem','=',$diaDiem->id)->get();
-        $diaDiem->KhachSan=KhachSan::where('id_diadiem','=',$diaDiem->id)->get();
-        $diaDiem->DichVu=DichVu::where('id_diadiem','=',$diaDiem->id)->get();
-        $diaDiem->ThanhPho= ThanhPho::where('id_diadiem','=',$diaDiem->id)->get();
-        return ['diadiem'=>[
-           'dichvu'=> $diaDiem->DichVu,
-           'khachsan'=> $diaDiem->KhachSan,
-           'quanan'=> $diaDiem->QuanAn,
-           'thanhpho'=>$diaDiem->ThanhPho,
-           ]];
+        $diaDiem->ThanhPho = ThanhPho::where('id_diadiem',$diaDiem->id)->get();
+        return [
+            'id'=>$diaDiem->id,
+            'tenthanhpho'=>$diaDiem->tenthanhpho,
+            'hinhanh'=>$diaDiem->hinhanh,
+            'mota'=>$diaDiem->mota,
+            // 'vido'=>$diaDiem->vido,
+            // 'kinhdo'=>$diaDiem->kinhdo,
+            'trangthai'=>$diaDiem->trangthai,
+           'diadiem'=>$diaDiem->ThanhPho,
+           ];
     }
 
     /**

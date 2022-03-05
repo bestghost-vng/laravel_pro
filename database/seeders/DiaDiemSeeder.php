@@ -18,15 +18,13 @@ class DiaDiemSeeder extends Seeder
          { $dacSan= new DiaDiem;
           $dacSan->fill(
               [
-                'tendiadiem'=>'khanhhoa'.$i,
+                'tenthanhpho'=>'banh'.$i,
+                'mota'=>'dep'.$i,
                 'kinhdo'=>$i,
                 'vido'=>$i,
-                'hinhanh'=>$i,
-                'mieuta'=>'hinh anh'.$i,
-                'quanan_id'=>$i,
-                'khachsan_id'=>$i,
-                'dichvu_id'=>$i,
-                'trangthai'=>$i,
+                'id_vungmien'=>$i,
+                'hinhanh'=>'hinh anh'.$i,
+                'trangthai'=>$i
               ]
               );
               $dacSan->save();}

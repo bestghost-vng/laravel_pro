@@ -10,7 +10,7 @@ class QuanAn extends Model
     use HasFactory;
     protected $guard =[];
     protected $primaryKey = 'id';
-    protected $fillable = ['tenquanan','diachi','hinhanh','id_diadiem'];
+    protected $fillable = ['tenquanan','mota','diachi','hinhanh','id_diadiem', 'kinhdo', 'vido'];
     public function BaiViet(){
         return $this->hasMany(BaiViet::class,'id_quanan','id');
     }
@@ -19,6 +19,6 @@ class QuanAn extends Model
         return $this->belongsTo(DiaDiem::class);
     }
     public function DacSan(){
-        return $this->belongsTo(DacSan::class);
+        return $this->hasMany(DacSan::class);
     }
 }

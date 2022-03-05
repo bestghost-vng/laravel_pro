@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\DiaDiem;
 use App\Models\ThanhPho;
+use App\Models\KhachSan;
 use Illuminate\Http\Request;
 class ThanhPhoController extends Controller
 {
@@ -47,12 +48,19 @@ class ThanhPhoController extends Controller
      */
     public function show(ThanhPho $thanhPho)
     {
-  
+        
      return[
-         'thanhpho'=>[
-             'diadiem'=>$thanhPho->DiaDiem,
-             'vungmien'=>$thanhPho->VunnMien,
-         ]
+        'id'=>$thanhPho->id,
+        'tendiadiem'=>$thanhPho->tendiadiem,
+        'vido'=>$thanhPho->vido,
+        'kinhdo'=>$thanhPho->kinhdo,
+        'hinhanh'=>$thanhPho->hinhanh,
+        'mota'=>$thanhPho->mota,
+        'trangthai'=>$thanhPho->trangthai,
+        'id_diadiem'=>$thanhPho->id_diadiem,
+            'khachsan'=>[$thanhPho->KhachSan],
+            'quanan'=>[$thanhPho->QuanAn],
+            'dichvu'=>[$thanhPho->DichVu],
          ];
     }
 

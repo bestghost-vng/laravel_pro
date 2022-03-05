@@ -39,11 +39,16 @@ class ThanhPhoController extends Controller
         $thanhPho= new ThanhPho;
         $thanhPho->fill(
                 [
-                    'tenthanhpho'=>$request->input('tenthanhpho'),
-                    'mota'=>$request->input('mota'),
+                   
+
+                    'tendiadiem'=>$request->input('tendiadiem'),
+                    'mieuta'=>$request->input('mieuta'),
+                    'kinhdo'=>$request->input('kinhdo'),
+                    'vido'=>$request->input('vido'),
                     'hinhanh'=>'',
-                    'id_vungmien'=>$request->input('idvung'),
-                    'id_diadiem'=>$request->input('iddiadiem'),
+                    'quanan_id'=>$request->input('iddacsan'),
+                    'dichvu_id'=>$request->input('iddichvu'),
+                    'khachsan_id'=>$request->input('idkhachsan'),
                     'trangthai'=>$request->input('trangthai'),
                 ]
                 );

@@ -18,7 +18,7 @@ class BaiVietSeeder extends Seeder
          { $dacSan= new BaiViet;
           $dacSan->fill(
               [
-                'noi_dung'=>'ngon'.$i,
+                'noidung'=>'ngon'.$i,
                 'like'=>$i,
                 'dislike'=>$i,
                 'view'=>$i,

@@ -19,7 +19,9 @@ class QuanAnSeeder extends Seeder
           $dacSan->fill(
               [
                 'tenquanan'=>'banh'.$i,
-                
+                'mota'=>$i,
+                'kinhdo'=>$i,
+                'vido'=>$i,
                 'hinhanh'=>'hinh anh'.$i,
                 'id_diadiem'=>$i,
                 'diachi'=>$i,

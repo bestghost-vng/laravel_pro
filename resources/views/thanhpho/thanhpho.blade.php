@@ -28,8 +28,9 @@
              @foreach($thanhPho as $lt)
               <tr>
                 <th scope="col"> <img src="public/upload/thanhpho/{{$lt->hinhanh}}" class="card-img-top" alt="..."></th>                
-                <th scope="col">{{$lt->tenthanhpho}}</th>
+                <th scope="col">{{$lt->tendiadiem}}</th>
                 <th scope="col">{{$lt->mota}}</th>
+                <th scope="col">{{$lt->diachi}}</th>
                 <th scope="col"><div class="card-body">
                     <h5 class="card-title"></h5>
                     <p class="card-text"></p>           

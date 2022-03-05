@@ -38,19 +38,7 @@ class BaiVietController extends Controller
      */
     public function store(StoreBaiVietRequest $request)
     {
-    //   $baiViet= new BaiViet;
-    //   $baiViet->fill(
-    //       [
-    //           'noi_dung'=>$request->input('noidung'),
-    //           'tenquanan'=>$request->input('tenquanan'),
-    //           'tendacsan'=>$request->input('tendacsan'),
-    //           'tendiadiem'=>$request->input('tendiadiem'),
-    //           'tendichvu'=>$request->input('tendichvu'),
-    //           'tennguoidung'=>$request->input('tennguoidung'),
-    //       ]
-    //       );
-    //     $baiViet->save();
-    //     return Redirect::route('baiviet.baiviet-detail',['baiViet'=>$baiViet]);
+    
     }
 
     /**
