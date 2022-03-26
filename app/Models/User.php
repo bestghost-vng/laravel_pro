@@ -53,4 +53,7 @@ class User extends Authenticatable
     public function View(){
         return $this->hasMany(View::class);
     }
+    public function CTUser(){
+        return $this->belongsTo(CtUser::class);
+    }
 }

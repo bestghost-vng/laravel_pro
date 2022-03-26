@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CtUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -32,7 +33,13 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
- 
+        $ct = new CtUser([
+            'hoten'=>'',
+            'diachi'=>'',
+            'sdt'=>'',
+            'gioitinh'=>'',
+            'id_user'=>$user->id,
+        ]);
         $user->save();
  
         return response()->json([

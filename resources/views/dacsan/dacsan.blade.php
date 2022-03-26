@@ -46,8 +46,20 @@
               @endforeach
           
             </tbody>
-            </table>
+            </table> 
+            
+            {{ $lstdacsan->links() }}
+           
           </div>  
+          {{--  <div class="container">
+                @foreach ($lstdacsan as $dt)
+                    {{ $dt->id }}
+                @endforeach
+            </div>
+            
+            {{ $dt->links(5) }}  --}}
+
+           
         </div>
         <!-- main-panel ends -->
 

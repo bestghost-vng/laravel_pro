@@ -105,6 +105,7 @@
                 <li class="nav-item"> <a class="nav-link" href="{{route('quanan.show')}}">Quán Ăn</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{route('dacsan.show')}}">Dặc Sản</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{route('thanhpho.show')}}">Thành Phố</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('user.index')}}">Users</a></li>
                
                 
               </ul>

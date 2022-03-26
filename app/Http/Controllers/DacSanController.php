@@ -7,6 +7,7 @@ use App\Models\HinhAnhDacSan;
 use App\Models\View;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 class DacSanController extends Controller
 {
    
@@ -17,7 +18,7 @@ class DacSanController extends Controller
      */
     public function index()
     {
-     $lstdacsan= DacSan::all();  
+     $lstdacsan= DacSan::paginate(2);
      return view('dacsan.dacsan',['lstdacsan'=>$lstdacsan]);
     }
 

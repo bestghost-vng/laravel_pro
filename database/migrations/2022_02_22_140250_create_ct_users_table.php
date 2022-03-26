@@ -15,6 +15,11 @@ class CreateCtUsersTable extends Migration
     {
         Schema::create('ct_users', function (Blueprint $table) {
             $table->id();
+            $table->string('hoten');
+            $table->string('diachi');
+            $table->string('sdt');
+            $table->string('gioitinh');
+            $table->foreignId('id_user')->references('id')->on('users');
             $table->timestamps();
         });
     }

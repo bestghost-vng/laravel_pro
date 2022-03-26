@@ -86,3 +86,6 @@ Route::get('/thanhpho/edit/{thanhPho}',[ThanhPhoController::class,'edit'])->name
 Route::put('/thanhpho/edit/{thanhPho}',[ThanhPhoController::class,'update'])->name('thanhpho.update');
 Route::get('/thanhpho/delete/{thanhPho}',[ThanhPhoController::class,'destroy'])->name('thanhpho.destroy');
 
+//user
+
+Route::get('/user',[UserController::class,'index'])->name('user.index');
