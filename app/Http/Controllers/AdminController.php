@@ -18,7 +18,7 @@ class AdminController extends Controller
             $request->session()->put('admin_id', $result->admin_id);
             return redirect()->route('dasboard');
         }else{
-            echo "Dang nhap loi";exit;
+            echo "Dang nhap loi vui logn dang nhap lai ";exit;
         }
        
        
